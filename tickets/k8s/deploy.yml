@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tickets-container
-          image: sweez/tickets:latest
+          image: sweezed/gl_tickets:latest
           env:
             - name: JWT_KEY
               valueFrom:
