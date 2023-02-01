@@ -2,15 +2,13 @@ import request from 'supertest'
 import { app } from '../app'
 
 describe('signin route', () => {
-  it('should fail when a email does not exist', async () => {
-    return request(app)
+  it('should fail when a email does not exist', async () => request(app)
       .post('/api/users/signin')
       .send({
         email: 'test@test.com',
         password: 'password',
       })
-      .expect(404)
-  })
+      .expect(404))
 
   it('should fail when incorrect password is provided', async () => {
     await request(app)

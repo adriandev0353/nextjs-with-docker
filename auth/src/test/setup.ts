@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 import request from 'supertest'
 import { app } from '../app'
 
+/* eslint vars-on-top: 0 */
+/* eslint no-var: 0 */
 declare global {
   var signin: () => Promise<string[]>
 }
@@ -18,15 +20,14 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   const collections = await mongoose.connection.db.collections()
-  for (let collection of collections) {
+  collections.forEach(async (collection) => {
     collection.deleteMany({})
-  }
+  })
 })
 
 afterAll(async () => {
-  await mongoose.connection.close() // Close client's connections first
+  await mongoose.connection.close() 
   if (mongo)
-    // Then stop the mongo server
     await mongo.stop()
 })
 

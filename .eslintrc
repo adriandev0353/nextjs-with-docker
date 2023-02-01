@@ -1,0 +1,93 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended", 
+    "plugin:@next/next/recommended",
+    "prettier",
+    "eslint:recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "engines": {
+      "node": ">=18.0.0"
+    },
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+
+    // I dont care that I am using a named export instead of a default export
+    "import/prefer-default-export": 0,
+
+    // using this rule to allow dev dependencies in only testfiles
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/test/setup.ts"]}],
+
+    // using this rule to that  import exentsions are not need in typescript
+    "import/extensions": ["error", "ignorePackages", {
+      "ts": "never",
+      "tsx": "never"
+    }],
+
+    // will allow us to ! use in typescript. Just make sure we are guarantee it needs wil be assigned. dont even display warning
+    "@typescript-eslint/no-non-null-assertion": 0,
+
+    // typescript detecing keys in interfaces as vars. want to disable this(but only for in this case. work around may have to be researched)
+    "@typescript-eslint/no-unused-vars": "warn",
+
+
+    // no console logs will throw error. we should be using log for things that are necessary logs. Console.logs must used to debug
+    "no-console": ["error"],
+
+    // allowing parameter reassign
+    "no-param-reassign": 0,
+
+    // allowing underscore dangle
+    "no-underscore-dangle": 0,
+
+    // allowing anyomous functions
+    "func-names": 0,
+
+    // ignores these types of file for eslint
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": [
+          "next",
+          "^@/",
+          "^.+\\.module\\.(css|less|sass|scss)$"
+        ]
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es2022": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "globals": {
+    // using this config to allow sign global func in test files(auth)
+    "signin": true
+  }
+}

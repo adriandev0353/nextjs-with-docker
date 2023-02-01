@@ -7,15 +7,15 @@ export interface IUserAttrs {
   password: string
 }
 
-// An inteface describes the properties what user model has (TS change)
-interface IUserModel extends mongoose.Model<IUserDoc> {
-  build(attrs: IUserAttrs): IUserDoc
-}
-
 // An interface that describe properties of a User Document (what build will return)
 interface IUserDoc extends mongoose.Document {
   email: string
   password: string
+}
+
+// An inteface describes the properties what user model has (TS change)
+interface IUserModel extends mongoose.Model<IUserDoc> {
+  build(attrs: IUserAttrs): IUserDoc
 }
 
 const userSchema = new mongoose.Schema(
@@ -50,8 +50,8 @@ userSchema.pre('save', async function (done) {
   done()
 })
 
-userSchema.statics.build = (attrs: IUserAttrs) => {
-  return new User(attrs)
-}
-
 export const User = mongoose.model<IUserDoc, IUserModel>('User', userSchema)
+
+userSchema.statics.build = (attrs: IUserAttrs) => new User(attrs)
+
+

@@ -1,5 +1,6 @@
+import { AppInitialProps, AppContext, AppProps } from 'next/app'
+import { log } from '@sweez/libs'
 import { buildClient } from '../apiHelpers/build-client'
-import { AppInitialProps } from 'next/app'
 import { Header } from '../components/Header'
 
 // styles
@@ -7,24 +8,18 @@ import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/app.css'
 
 // types
-import { AppContext, AppProps } from 'next/app'
-
-export interface ICurrentUserProps {
-  currentUser: string | null
-}
+import { ICurrentUserProps } from '../shared-types'
 
 const AppComponent = ({
   Component,
   pageProps,
   currentUser,
-}: AppProps & ICurrentUserProps) => {
-  return (
+}: AppProps & ICurrentUserProps) => (
     <div>
       <Header currentUser={currentUser} />
       <Component {...pageProps} />
     </div>
   )
-}
 
 AppComponent.getInitialProps = async (
   appContext: AppContext
@@ -37,8 +32,8 @@ AppComponent.getInitialProps = async (
     const response = await client.get('/api/users/currentuser')
     data = response.data 
   } catch (error) {
-    console.log('AT current time you can not run this is local dev without being in kubernetes')
-    data = { message: 'current user is local dev. NOT meant to be used in the local dev env.'}
+      log('AT current time you can not run this is local dev without being in kubernetes')
+      data = { message: 'current user is local dev. NOT meant to be used in the local dev env.'}
   }
  
 

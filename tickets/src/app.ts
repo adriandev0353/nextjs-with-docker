@@ -1,4 +1,4 @@
-import express, { Request, NextFunction, request } from 'express'
+import express, { Request } from 'express'
 import cookieSession from 'cookie-session'
 
 // helps with erros that occur in asyc. Do not need to use 'next' to pass error

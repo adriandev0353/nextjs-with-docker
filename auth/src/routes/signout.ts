@@ -1,13 +1,13 @@
-import express from 'express'
+import express, { Request } from 'express'
+
 // types
-import { Request, NextFunction } from 'express'
 import { CustomResponseType } from '@sweez/libs'
 
 const router = express.Router()
 
 router.post(
   '/api/users/signout',
-  (req: Request, res: CustomResponseType, next: NextFunction) => {
+  (req: Request, res: CustomResponseType) => {
     req.session = null
 
     return res.send({ message: 'Signed out' })

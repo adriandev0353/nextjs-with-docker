@@ -1,5 +1,7 @@
+import React from 'react'
+
 // types
-import { IMessageErrorResponse } from '../hooks/useCallRequest'
+import { IMessageErrorResponse } from '../shared-types'
 
 interface IDisplayErrorMsgsProps {
   error: IMessageErrorResponse

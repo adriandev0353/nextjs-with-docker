@@ -2,35 +2,29 @@ import request from 'supertest'
 import { app } from '../app'
 
 describe('signup route', () => {
-  it('should return a 201 on successful signup', async () => {
-    return request(app)
+  it('should return a 201 on successful signup', async () => request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
         password: 'password',
       })
-      .expect(201)
-  })
+      .expect(201))
 
-  it('should return 400 with invalid email', async () => {
-    return request(app)
+  it('should return 400 with invalid email', async () => request(app)
       .post('/api/users/signup')
       .send({
         email: 'testtest.com',
         password: 'password',
       })
-      .expect(400)
-  })
+      .expect(400))
 
-  it('should return 400 with invalid password', async () => {
-    return request(app)
+  it('should return 400 with invalid password', async () => request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
         password: 'pas',
       })
-      .expect(400)
-  })
+      .expect(400))
 
   it('should return 400 with missing email and password', async () => {
     await request(app)

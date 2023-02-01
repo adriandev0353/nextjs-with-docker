@@ -1,15 +1,15 @@
 import Head from 'next/head'
-import { buildClient } from '../apiHelpers/build-client'
 
 // types
 import { AxiosResponse } from 'axios'
 import { NextPageContext } from 'next'
+import { buildClient } from '../apiHelpers/build-client'
+
 interface ICurrentUserProps {
   currentUser: string | null
 }
 
 function Home({ currentUser }: ICurrentUserProps) {
-  console.log('home component:', currentUser)
   return (
     <>
       <Head>

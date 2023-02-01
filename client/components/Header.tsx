@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Router from 'next/router'
-import { ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import { useCallRequest } from '../hooks/useCallRequest'
 
 // types
-import { ICurrentUserProps } from '../pages/_app'
-import { EMethod } from '../hooks/useCallRequest'
+import { ICurrentUserProps, EMethod } from '../shared-types'
+
 type LinkConfigType = { label: string; href: string }
 
 export const Header = ({ currentUser }: ICurrentUserProps) => {
@@ -17,7 +17,7 @@ export const Header = ({ currentUser }: ICurrentUserProps) => {
   const linkConfigs: LinkConfigType[] = [
     currentUser && { label: 'Sign Out', href: '/auth/signout' },
     !currentUser && { label: 'Sign In', href: '/auth/signin' },
-  ].flatMap((linkConfig) => (linkConfig ? linkConfig : []))
+  ].flatMap((linkConfig) => (linkConfig || []))
 
   const onSignOutHandler = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()

@@ -11,11 +11,11 @@ const buildClient = ({ req }: NextPageContext) => {
       baseURL: ingress,
       headers: req!.headers,
     })
-  } else {
+  } 
     return axios.create({
       baseURL: '/', // will use host from browser
     })
-  }
+  
 }
 
 export { buildClient }

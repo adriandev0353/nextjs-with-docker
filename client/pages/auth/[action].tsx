@@ -2,13 +2,13 @@ import React, { useRef } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useCallRequest } from '../../hooks/useCallRequest'
 
 // types
 import { FormEvent } from 'react'
-import { EMethod } from '../../hooks/useCallRequest'
 import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+import { EMethod , useCallRequest } from '../../hooks/useCallRequest'
+
 interface IParams extends ParsedUrlQuery {
   action: string | undefined
 }
@@ -97,7 +97,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext<IParams>) {
 
   return {
     props: {
-      action: action,
+      action,
     },
   }
 }

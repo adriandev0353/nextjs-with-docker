@@ -1,31 +1,19 @@
-import React, { ReactElement, useState } from 'react'
-import axios from 'axios'
+import React, {  useState , ReactElement } from 'react'
+import axios, { AxiosError } from 'axios'
+import { log } from '@sweez/libs'
 import { DisplayErrorMsgs } from '../components/DisplayErrorMsgs'
 
 // types
-import { AxiosError } from 'axios'
-export interface IMessageErrorResponse {
-  message: String
-  errors: String[]
-}
+import { IMessageSuccessResponse, IMessageErrorResponse, EMethod} from '../shared-types'
 
-export interface IMessageSuccessResponse {
-  message: String
-}
-
-export enum EMethod {
-  GET = 'GET',
-  POST = 'POST',
-  DELETE = 'DELETE',
-  PUT = 'PUT',
-}
-
+/* eslint-disable */ // the use of any
 interface IReqParams<D> {
   url: string
   method: EMethod
   headers?: any
   data?: D | any
 }
+/* eslint-enable */
 
 export function useCallRequest<D>(request: IReqParams<D>) {
   const [errors, setErrors] = useState<ReactElement>()
@@ -42,12 +30,14 @@ export function useCallRequest<D>(request: IReqParams<D>) {
       if (error instanceof AxiosError && error.response?.data.errors) {
         reqErrorMsg = error.response?.data
       } else if (error instanceof Error) {
-        console.log('NOT axios error OR no Errors in object', error)
+        log('NOT axios error OR no Errors in object', error)
         reqErrorMsg = { message: error.message, errors: [error.message] }
       }
 
       setErrors(<DisplayErrorMsgs error={reqErrorMsg} />)
     }
+
+    return undefined
   }
 
   return { doRequest, errors }
