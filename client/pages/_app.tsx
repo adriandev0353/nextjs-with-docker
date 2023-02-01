@@ -30,7 +30,17 @@ AppComponent.getInitialProps = async (
   appContext: AppContext
 ): Promise<AppInitialProps & ICurrentUserProps> => {
   const client = buildClient(appContext.ctx)
-  const { data } = await client.get('/api/users/currentuser')
+
+  let data = { message: ''}
+  try {
+    // will not build with out this catch due to SSG what happens at build time
+    const response = await client.get('/api/users/currentuser')
+    data = response.data 
+  } catch (error) {
+    console.log('AT current time you can not run this is local dev without being in kubernetes')
+    data = { message: 'current user is local dev. NOT meant to be used in the local dev env.'}
+  }
+ 
 
   let pageProps = {}
   if (appContext.Component.getInitialProps) {
