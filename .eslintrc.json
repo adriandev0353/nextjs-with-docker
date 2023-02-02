@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard-with-typescript"
+    ],
+    "overrides": [
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        // "project": "/client/tsconfig.json",
+        "ecmaVersion": 2022,
+        "engines": {
+          "node": ">=18.0.0"
+        },
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+    }, 
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+    }
+}

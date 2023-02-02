@@ -12,7 +12,7 @@ export function createSession(
       id: user.id,
       email: user.email,
     },
-    process.env.JWT_KEY! // check performed on start
+    process.env.JWT_KEY! 
   )
 
   req.session = {
