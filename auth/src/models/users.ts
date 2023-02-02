@@ -15,29 +15,29 @@ interface IUserDoc extends mongoose.Document {
 
 // An inteface describes the properties what user model has (TS change)
 interface IUserModel extends mongoose.Model<IUserDoc> {
-  build(attrs: IUserAttrs): IUserDoc
+  build: (attrs: IUserAttrs) => IUserDoc
 }
 
 const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
-      required: true,
+      required: true
     },
     password: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   {
     toJSON: {
-      transform(doc, ret) {
+      transform (doc, ret) {
         ret.id = ret._id
         delete ret._id
         delete ret.password
         delete ret.__v
-      },
-    },
+      }
+    }
   }
 )
 
@@ -53,5 +53,3 @@ userSchema.pre('save', async function (done) {
 export const User = mongoose.model<IUserDoc, IUserModel>('User', userSchema)
 
 userSchema.statics.build = (attrs: IUserAttrs) => new User(attrs)
-
-

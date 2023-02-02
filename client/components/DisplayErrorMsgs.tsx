@@ -1,13 +1,13 @@
 import React from 'react'
 
 // types
-import { IMessageErrorResponse } from '../shared-types'
+import { type IMessageErrorResponse } from '../shared-types'
 
 interface IDisplayErrorMsgsProps {
   error: IMessageErrorResponse
 }
 
-function DisplayErrorMsgs({ error }: IDisplayErrorMsgsProps) {
+function DisplayErrorMsgs ({ error }: IDisplayErrorMsgsProps) {
   const { message, errors } = error
   if (!errors) return null
 

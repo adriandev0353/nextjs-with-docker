@@ -20,15 +20,13 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   const collections = await mongoose.connection.db.collections()
-  collections.forEach(async (collection) => {
-    collection.deleteMany({})
-  })
+  const promises = collections.map(async (collection) => await collection.deleteMany({}))
+  await Promise.all(promises)
 })
 
 afterAll(async () => {
-  await mongoose.connection.close() 
-  if (mongo)
-    await mongo.stop()
+  await mongoose.connection.close()
+  if (mongo) await mongo.stop()
 })
 
 global.signin = async () => {
@@ -39,7 +37,7 @@ global.signin = async () => {
     .post('/api/users/signup')
     .send({
       email,
-      password,
+      password
     })
     .expect(201)
 

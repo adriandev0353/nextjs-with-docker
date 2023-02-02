@@ -1,12 +1,10 @@
-import React, {  useState , ReactElement, useEffect } from 'react'
+import React, { useState, type ReactElement } from 'react'
 import axios, { AxiosError } from 'axios'
 import { log } from '@sweez/libs'
 import { DisplayErrorMsgs } from '../components/DisplayErrorMsgs'
+import { type IMessageSuccessResponse, type IMessageErrorResponse, type IReqParams } from '../shared-types'
 
-// types
-import { IMessageSuccessResponse, IMessageErrorResponse, IReqParams} from '../shared-types'
-
-export function useCallRequest<D>(request: IReqParams<D>) {
+export function useCallRequest<D> (request: IReqParams<D>) {
   const [errors, setErrors] = useState<ReactElement>()
 
   const doRequest = async function <T>(data?: T) {

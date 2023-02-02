@@ -1,6 +1,6 @@
-import express, { Request } from 'express'
+import express, { type Request } from 'express'
 import cookieSession from 'cookie-session'
-import { currentUser, errorHandler, NotFoundError, CustomResponseType } from '@sweez/libs'
+import { currentUser, errorHandler, NotFoundError, type CustomResponseType } from '@sweez/libs'
 
 // helps with erros that occur in asyc. Do not need to use 'next' to pass error
 import 'express-async-errors'
@@ -13,7 +13,7 @@ app.use(
     signed: false, // no encryption
 
     // for testing purpose jest use http not https so for cookies need to set to false in test
-    secure: process.env.NODE_ENV !== 'test',
+    secure: process.env.NODE_ENV !== 'test'
   })
 )
 app.use(currentUser)

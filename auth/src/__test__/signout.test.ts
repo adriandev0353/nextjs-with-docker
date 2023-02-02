@@ -7,7 +7,7 @@ describe('signout route', () => {
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password',
+        password: 'password'
       })
       .expect(201)
 
@@ -17,7 +17,7 @@ describe('signout route', () => {
       .post('/api/users/signout')
       .send({
         email: 'test@test.com',
-        password: 'password',
+        password: 'password'
       })
       .expect(200)
 

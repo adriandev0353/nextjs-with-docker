@@ -1,12 +1,11 @@
 import Head from 'next/head'
 
 // types
-import { AxiosResponse } from 'axios'
-import { NextPageContext } from 'next'
+import { type AxiosResponse } from 'axios'
+import { type NextPageContext } from 'next'
 import { buildClient } from '../apiHelpers/build-client'
 
-
-function Home() {
+function Home () {
   return (
     <>
       <Head>

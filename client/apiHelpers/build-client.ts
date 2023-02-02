@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // types
-import { NextPageContext } from 'next'
+import { type NextPageContext } from 'next'
 
 const buildClient = ({ req }: NextPageContext) => {
   // determine if the call is happening on browser or server
@@ -9,13 +9,12 @@ const buildClient = ({ req }: NextPageContext) => {
     const ingress = process.env.INGRESS_HOST
     return axios.create({
       baseURL: ingress,
-      headers: req!.headers,
+      headers: req!.headers
     })
-  } 
-    return axios.create({
-      baseURL: '/', // will use host from browser
-    })
-  
+  }
+  return axios.create({
+    baseURL: '/' // will use host from browser
+  })
 }
 
 export { buildClient }

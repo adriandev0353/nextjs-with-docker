@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { log } from '@sweez/libs'
 import { app } from './app'
 
-async function start() {
+async function start (): Promise<void> {
   const db = 'auth'
   const url = `mongodb://auth-mongo-service:27017/${db}`
 
@@ -11,8 +11,8 @@ async function start() {
       throw new Error('Check Kuberenetes Env keys. Not found error')
     }
   } else if (!process.env.JWT_KEY) {
-      log('WARNING: process.env.JWT_KEY:', process.env.JWT_KEY)
-    }
+    log('WARNING: process.env.JWT_KEY:', process.env.JWT_KEY)
+  }
 
   try {
     await mongoose.connect(url)
@@ -26,4 +26,5 @@ async function start() {
   })
 }
 
-start()
+// void is used here to prevent eslint rule floating promises
+void start()

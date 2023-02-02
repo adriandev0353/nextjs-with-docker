@@ -1,37 +1,38 @@
 import Link from 'next/link'
 import Router from 'next/router'
-import React, { ReactElement } from 'react'
+import React, { type ReactElement } from 'react'
 import { useCallRequest } from '../hooks/useCallRequest'
 
 // types
-import { ICurrentUserProps, EMethod} from '../shared-types'
+import { type ICurrentUserProps, EMethod } from '../shared-types'
 
-type LinkConfigType = { label: string; href: string }
+interface LinkConfigType { label: string, href: string }
 
 export const Header = ({ currentUser }: ICurrentUserProps) => {
   const { doRequest } = useCallRequest({
     url: '/api/users/signout',
-    method: EMethod.POST,
+    method: EMethod.POST
   })
 
   const linkConfigs: LinkConfigType[] = [
     currentUser && { label: 'Sign Out', href: '/auth/signout' },
-    !currentUser && { label: 'Sign In', href: '/auth/signin' },
+    !currentUser && { label: 'Sign In', href: '/auth/signin' }
   ].flatMap((linkConfig) => (linkConfig || []))
 
   const onSignOutHandler = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     await doRequest()
-    Router.push('/')
+    await Router.push('/')
   }
 
   const links: ReactElement[] = linkConfigs.map((link, index) => {
-    if (link.label === 'Sign Out')
+    if (link.label === 'Sign Out') {
       return (
-        <a className='sign-out cursor-pointer' onClick={onSignOutHandler}>
+        <a key={index} className='sign-out cursor-pointer' onClick={onSignOutHandler}>
           Sign Out
         </a>
       )
+    }
 
     return (
       <li key={index}>

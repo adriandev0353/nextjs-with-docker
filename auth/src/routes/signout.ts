@@ -1,7 +1,7 @@
-import express, { Request } from 'express'
+import express, { type Request } from 'express'
 
 // types
-import { CustomResponseType } from '@sweez/libs'
+import { type CustomResponseType } from '@sweez/libs'
 
 const router = express.Router()
 

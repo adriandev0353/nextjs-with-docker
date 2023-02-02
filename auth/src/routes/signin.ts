@@ -1,6 +1,6 @@
-import express, { Request } from 'express'
+import express, { type Request } from 'express'
 import { body } from 'express-validator'
-import { NotFoundError, GeneralError , validateRequest , CustomResponseType } from '@sweez/libs'
+import { NotFoundError, GeneralError, validateRequest, type CustomResponseType } from '@sweez/libs'
 import { Password } from '../libs/password'
 
 // types
@@ -16,7 +16,7 @@ router.post(
     body('password')
       .trim()
       .notEmpty()
-      .withMessage('You must supply a password'),
+      .withMessage('You must supply a password')
   ],
   validateRequest,
   async (req: Request, res: CustomResponseType) => {
@@ -27,12 +27,11 @@ router.post(
     }
 
     const isPasswordMatch = await Password.compare(user.password, password)
-    if (!isPasswordMatch)
-      throw new GeneralError(400, 'login failed', ['credentials not valid'])
+    if (!isPasswordMatch) throw new GeneralError(400, 'login failed', ['credentials not valid'])
 
-    createSession(req, user as { id: string; email: string })
+    createSession(req, user as { id: string, email: string })
     return res.send({
-      message: `signin user - id:${user.id}  email: ${user.email}`,
+      message: `signin user - id:${user.id}  email: ${user.email}`
     })
   }
 )

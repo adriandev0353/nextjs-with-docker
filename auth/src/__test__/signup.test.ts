@@ -2,36 +2,42 @@ import request from 'supertest'
 import { app } from '../app'
 
 describe('signup route', () => {
-  it('should return a 201 on successful signup', async () => request(app)
+  it('should return a 201 on successful signup', async () => {
+    await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password',
+        password: 'password'
       })
-      .expect(201))
+      .expect(201)
+  })
 
-  it('should return 400 with invalid email', async () => request(app)
+  it('should return 400 with invalid email', async () => {
+    await request(app)
       .post('/api/users/signup')
       .send({
         email: 'testtest.com',
-        password: 'password',
+        password: 'password'
       })
-      .expect(400))
+      .expect(400)
+  })
 
-  it('should return 400 with invalid password', async () => request(app)
+  it('should return 400 with invalid password', async () => {
+    await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'pas',
+        password: 'pas'
       })
-      .expect(400))
+      .expect(400)
+  })
 
   it('should return 400 with missing email and password', async () => {
     await request(app)
       .post('/api/users/signup')
       .send({
         email: '',
-        password: 'password',
+        password: 'password'
       })
       .expect(400)
 
@@ -39,7 +45,7 @@ describe('signup route', () => {
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: '',
+        password: ''
       })
       .expect(400)
   })
@@ -49,7 +55,7 @@ describe('signup route', () => {
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password',
+        password: 'password'
       })
       .expect(201)
 
@@ -57,7 +63,7 @@ describe('signup route', () => {
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password',
+        password: 'password'
       })
       .expect(422)
   })
@@ -67,7 +73,7 @@ describe('signup route', () => {
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password',
+        password: 'password'
       })
       .expect(201)
     // console.log('resonse.headers', response.headers)
