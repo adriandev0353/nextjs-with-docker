@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: |
           echo 'Installing dependencies...'
-          npm ci
+          npm install
 
       - name: Run Lint
         run: |
