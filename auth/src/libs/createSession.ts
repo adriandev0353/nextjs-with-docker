@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-// types
 import { type Request } from 'express'
 
 export function createSession(

@@ -2,7 +2,6 @@ import React, { useRef, type FormEvent } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
-// types
 import { type GetStaticPropsContext } from 'next'
 import { type ParsedUrlQuery } from 'querystring'
 import { useCallRequest } from '../../hooks/useCallRequest'

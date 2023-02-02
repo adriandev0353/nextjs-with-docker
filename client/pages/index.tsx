@@ -1,5 +1,4 @@
 import Head from 'next/head'
-// types
 import { type AxiosResponse } from 'axios'
 import { type NextPageContext } from 'next'
 import { buildClient } from '../apiHelpers/build-client'

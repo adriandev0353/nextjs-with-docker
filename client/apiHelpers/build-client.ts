@@ -1,5 +1,4 @@
 import axios from 'axios'
-// types
 import { type NextPageContext } from 'next'
 
 const buildClient = ({ req }: NextPageContext) => {

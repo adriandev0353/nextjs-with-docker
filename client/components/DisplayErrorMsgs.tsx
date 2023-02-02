@@ -1,5 +1,4 @@
 import React from 'react'
-// types
 import { type IMessageErrorResponse } from '../shared-types'
 
 interface IDisplayErrorMsgsProps {

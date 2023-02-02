@@ -1,5 +1,4 @@
 import express, { type Request } from 'express'
-// types
 import { type CustomResponseType } from '@sweez/libs'
 
 const router = express.Router()

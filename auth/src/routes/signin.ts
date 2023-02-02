@@ -7,7 +7,6 @@ import {
   type CustomResponseType,
 } from '@sweez/libs'
 import { Password } from '../libs/password'
-// types
 import { User } from '../models/users'
 import { createSession } from '../libs/createSession'
 

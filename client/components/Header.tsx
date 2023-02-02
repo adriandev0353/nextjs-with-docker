@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Router from 'next/router'
 import React, { type ReactElement } from 'react'
 import { useCallRequest } from '../hooks/useCallRequest'
-// types
 import { type ICurrentUserProps, EMethod } from '../shared-types'
 
 interface LinkConfigType {

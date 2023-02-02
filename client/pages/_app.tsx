@@ -2,11 +2,10 @@ import { type AppInitialProps, type AppContext, type AppProps } from 'next/app'
 import { log } from '@sweez/libs'
 import { buildClient } from '../apiHelpers/build-client'
 import { Header } from '../components/Header'
+import { type ICurrentUserProps } from '../shared-types'
 // styles
 import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/app.css'
-// types
-import { type ICurrentUserProps } from '../shared-types'
 
 const AppComponent = ({
   Component,
@@ -24,6 +23,7 @@ AppComponent.getInitialProps = async (
 ): Promise<AppInitialProps & ICurrentUserProps> => {
   const client = buildClient(appContext.ctx)
   let data = { message: '' }
+  let pageProps = {}
 
   try {
     // will not build with out this catch due to SSG what happens at build time
@@ -39,8 +39,6 @@ AppComponent.getInitialProps = async (
         'current user is local dev. NOT meant to be used in the local dev env.',
     }
   }
-
-  let pageProps = {}
 
   if (appContext.Component.getInitialProps != null) {
     /* comes from indexcomponent get initial props
