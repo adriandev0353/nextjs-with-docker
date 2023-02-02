@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { log } from '@sweez/libs'
 import { app } from './app'
 
-async function start(): Promise<void> {
+async function start (): Promise<void> {
   const db = 'auth'
   const url = `mongodb://auth-mongo-service:27017/${db}`
 

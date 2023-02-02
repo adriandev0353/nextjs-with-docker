@@ -3,7 +3,7 @@ import { type AxiosResponse } from 'axios'
 import { type NextPageContext } from 'next'
 import { buildClient } from '../apiHelpers/build-client'
 
-function Home() {
+function Home () {
   return (
     <>
       <Head>

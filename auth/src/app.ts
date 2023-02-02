@@ -6,7 +6,7 @@ import {
   currentUser,
   errorHandler,
   NotFoundError,
-  type CustomResponseType,
+  type CustomResponseType
 } from '@sweez/libs'
 import { signUpRouter } from './routes/signup'
 import { signInRouter } from './routes/signin'
@@ -25,7 +25,7 @@ app.use(
     /* important: in local dev call your host with https or it wont set cookie */
 
     // for testing purpose jest use http not https so for cookies need to set to false in test
-    secure: process.env.NODE_ENV !== 'test',
+    secure: process.env.NODE_ENV !== 'test'
   })
 )
 app.use(currentUser)

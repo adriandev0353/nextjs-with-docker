@@ -10,7 +10,7 @@ import '../styles/app.css'
 const AppComponent = ({
   Component,
   pageProps,
-  currentUser,
+  currentUser
 }: AppProps & ICurrentUserProps) => (
   <div>
     <Header currentUser={currentUser} />
@@ -36,7 +36,7 @@ AppComponent.getInitialProps = async (
     )
     data = {
       message:
-        'current user is local dev. NOT meant to be used in the local dev env.',
+        'current user is local dev. NOT meant to be used in the local dev env.'
     }
   }
 
@@ -50,7 +50,7 @@ AppComponent.getInitialProps = async (
 
   return {
     pageProps,
-    currentUser: data.message || null,
+    currentUser: data.message || null
   }
 }
 
