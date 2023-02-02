@@ -1,13 +1,14 @@
-import React, { useRef } from 'react'
+import React, { useRef, FormEvent } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 
 // types
-import { FormEvent } from 'react'
 import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { EMethod , useCallRequest } from '../../hooks/useCallRequest'
+import {  useCallRequest } from '../../hooks/useCallRequest'
+import { EMethod } from '../../shared-types'
+
 
 interface IParams extends ParsedUrlQuery {
   action: string | undefined

@@ -17,3 +17,12 @@ export enum EMethod {
   DELETE = 'DELETE',
   PUT = 'PUT',
 }
+
+/* eslint-disable */ // the use of any
+export interface IReqParams<D> {
+  url: string
+  method: EMethod
+  headers?: any
+  data?: D | any
+}
+/* eslint-enable */

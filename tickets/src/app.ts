@@ -1,13 +1,9 @@
 import express, { Request } from 'express'
 import cookieSession from 'cookie-session'
+import { currentUser, errorHandler, NotFoundError, CustomResponseType } from '@sweez/libs'
 
 // helps with erros that occur in asyc. Do not need to use 'next' to pass error
 import 'express-async-errors'
-
-import { currentUser, errorHandler, NotFoundError } from '@sweez/libs'
-
-// types
-import { CustomResponseType } from '@sweez/libs'
 
 const app = express()
 app.set('trust proxy', true)

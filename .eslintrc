@@ -5,7 +5,6 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended", 
-    "plugin:@next/next/recommended",
     "prettier",
     "eslint:recommended"
   ],
@@ -14,6 +13,7 @@
     "prettier"
   ],
   "parserOptions": {
+    // "project": "/client/tsconfig.json",
     "ecmaVersion": 2022,
     "engines": {
       "node": ">=18.0.0"
@@ -57,6 +57,10 @@
 
     // allowing anyomous functions
     "func-names": 0,
+
+    // problem with typescript where enums are producing shadows with enums
+      "no-shadow": 0,
+      "@typescript-eslint/no-shadow": 0,
 
     // ignores these types of file for eslint
     "import/no-unresolved": [

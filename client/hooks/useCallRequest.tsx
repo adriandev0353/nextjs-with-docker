@@ -4,16 +4,7 @@ import { log } from '@sweez/libs'
 import { DisplayErrorMsgs } from '../components/DisplayErrorMsgs'
 
 // types
-import { IMessageSuccessResponse, IMessageErrorResponse, EMethod} from '../shared-types'
-
-/* eslint-disable */ // the use of any
-interface IReqParams<D> {
-  url: string
-  method: EMethod
-  headers?: any
-  data?: D | any
-}
-/* eslint-enable */
+import { IMessageSuccessResponse, IMessageErrorResponse, IReqParams} from '../shared-types'
 
 export function useCallRequest<D>(request: IReqParams<D>) {
   const [errors, setErrors] = useState<ReactElement>()

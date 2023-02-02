@@ -5,11 +5,8 @@ import { AxiosResponse } from 'axios'
 import { NextPageContext } from 'next'
 import { buildClient } from '../apiHelpers/build-client'
 
-interface ICurrentUserProps {
-  currentUser: string | null
-}
 
-function Home({ currentUser }: ICurrentUserProps) {
+function Home() {
   return (
     <>
       <Head>

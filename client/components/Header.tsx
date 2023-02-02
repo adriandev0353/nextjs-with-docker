@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react'
 import { useCallRequest } from '../hooks/useCallRequest'
 
 // types
-import { ICurrentUserProps, EMethod } from '../shared-types'
+import { ICurrentUserProps, EMethod} from '../shared-types'
 
 type LinkConfigType = { label: string; href: string }
 

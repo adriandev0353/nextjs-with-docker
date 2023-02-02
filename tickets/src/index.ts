@@ -10,15 +10,15 @@ async function start() {
     if (!process.env.JWT_KEY) {
       throw new Error('Check Kuberenetes Env keys. Not found error')
     }
-  } else {
-    console.warn('process.env.JWT_KEY:', process.env.JWT_KEY)
-  }
+  } else if (!process.env.JWT_KEY) {
+      log('WARNING: process.env.JWT_KEY:', process.env.JWT_KEY)
+    }
 
   try {
     await mongoose.connect(url)
     log('connected to tickets database')
   } catch (error) {
-      log('mongo db error:', error)
+    log('mongo db error:', error)
   }
 
   app.listen(3200, () => {
