@@ -10,9 +10,10 @@ router.get(
       log('no current user signed in')
       return res.status(200).json({ message: '' })
     }
+
     log('returning user:', req.currentUser.id, req.currentUser.email)
     return res.status(200).json({
-      message: `current user id: ${req.currentUser.id}, email: ${req.currentUser.email}`
+      message: `current user id: ${req.currentUser.id}, email: ${req.currentUser.email}`,
     })
   }
 )

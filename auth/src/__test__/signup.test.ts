@@ -7,73 +7,66 @@ describe('signup route', () => {
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password'
+        password: 'password',
       })
       .expect(201)
   })
-
   it('should return 400 with invalid email', async () => {
     await request(app)
       .post('/api/users/signup')
       .send({
         email: 'testtest.com',
-        password: 'password'
+        password: 'password',
       })
       .expect(400)
   })
-
   it('should return 400 with invalid password', async () => {
     await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'pas'
+        password: 'pas',
       })
       .expect(400)
   })
-
   it('should return 400 with missing email and password', async () => {
     await request(app)
       .post('/api/users/signup')
       .send({
         email: '',
-        password: 'password'
+        password: 'password',
       })
       .expect(400)
-
     await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: ''
+        password: '',
       })
       .expect(400)
   })
-
   it('should not allow duplicate emails', async () => {
     await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password'
+        password: 'password',
       })
       .expect(201)
-
     await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password'
+        password: 'password',
       })
       .expect(422)
   })
-
   it('should have a cookie header after successful signup', async () => {
     const response = await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
-        password: 'password'
+        password: 'password',
       })
       .expect(201)
     // console.log('resonse.headers', response.headers)

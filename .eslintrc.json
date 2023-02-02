@@ -32,9 +32,42 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".jsx", ".tsx"]
+        "extensions": [".tsx"]
       }
     ],
+
+    // wont allow padding in blocks of code
+    "padded-blocks": ["error", "never"],
+
+    // adds line after all imports
+    "import/newline-after-import": ["error", { "count": 1 }],
+
+    // add proper spacing between statements and blocks of code
+    "padding-line-between-statements": [
+      "error",
+      // groups all imports together
+      { "blankLine": "never", "prev": "import", "next": "import" },
+
+      // blank line after declaration section and blocks of code
+      {
+        "blankLine": "always",
+        "prev": ["const", "let", "var", "block", "block-like"],
+        "next": "*"
+      },
+
+      // black line before export
+      { "blankLine": "always", "prev": "*", "next": ["export"] },
+
+      // group all declarations together
+      {
+        "blankLine": "never",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      }
+    ],
+
+    // only 1 line of spacing. no mutliple lines
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
 
     // I dont care that I am using a named export instead of a default export
     "import/prefer-default-export": 0,
@@ -49,7 +82,7 @@
 
     // allowing typescript to implicityly infer return types
     "@typescript-eslint/explicit-function-return-type": 0,
-  
+
     // allowing temperal literals on any type. ! be warned it logging objects will not convert to string show ill show object object
     "@typescript-eslint/restrict-template-expressions": 0,
 
@@ -102,7 +135,7 @@
         "checksVoidReturn": false
       }
     ],
-    
+
     // ignores these types of file for eslint
     "import/no-unresolved": [
       2,
@@ -111,7 +144,7 @@
       }
     ]
   },
-	"settings": {
+  "settings": {
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]

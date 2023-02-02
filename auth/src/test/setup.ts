@@ -20,7 +20,9 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   const collections = await mongoose.connection.db.collections()
-  const promises = collections.map(async (collection) => await collection.deleteMany({}))
+  const promises = collections.map(
+    async (collection) => await collection.deleteMany({})
+  )
   await Promise.all(promises)
 })
 
@@ -37,7 +39,7 @@ global.signin = async () => {
     .post('/api/users/signup')
     .send({
       email,
-      password
+      password,
     })
     .expect(201)
 

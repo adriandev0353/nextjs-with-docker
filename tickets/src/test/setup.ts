@@ -38,7 +38,7 @@ global.signin = async () => {
     .post('/api/users/signup')
     .send({
       email,
-      password
+      password,
     })
     .expect(201)
 
