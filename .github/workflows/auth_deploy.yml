@@ -1,0 +1,56 @@
+name: Auth Deploy
+on: 
+  pull_request:
+    branches: 
+      - 'main'
+    paths:
+      - 'auth/**'
+      - '.github/workflows/auth_deploy.yml'
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: install-dependencies
+        run: |
+          echo 'Installing dependencies...'
+          cd auth
+          npm ci
+
+      - name: run-tests
+        run: |
+          echo 'Running tests...'
+          cd auth
+          npm run test
+
+  Build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: get-code
+        uses: actions/checkout@v3
+
+      - name: install-node-18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: install-dependencies
+        run: |
+          echo 'Installing dependencies...'
+          cd auth
+          npm ci
+
+      - name: build
+        run: |
+          echo 'Building...'
+          cd auth
+          npm run build

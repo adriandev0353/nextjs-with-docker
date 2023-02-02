@@ -1,0 +1,32 @@
+name: lint N Pretty
+on: 
+  pull_request:
+    branches: 
+      - 'main'
+  
+jobs:
+  lintNpretty:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          echo 'Installing dependencies...'
+          npm ci
+
+      - name: Run Lint
+        run: |
+          echo 'Running Lint...'
+          npm run lint
+
+      - name: Make Pretty
+        run: |
+          echo 'Making Pretty...'
+          npm run pretty
