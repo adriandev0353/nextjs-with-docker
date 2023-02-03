@@ -28,7 +28,6 @@
   },
   "plugins": ["react"],
   "rules": {
-    "import/extensions": [ "error", "ignorePackages", { "": "never" } ],
 
     "react/react-in-jsx-scope": 0,
     
@@ -95,15 +94,15 @@
     // allowing || to be used instead of ?? in typescript
     "@typescript-eslint/prefer-nullish-coalescing": 0,
 
-    // using this rule to that  import exentsions are not need in typescript
-    // "import/extensions": [
-    //   "error",
-    //   "ignorePackages",
-    //   {
-    //     "ts": "never",
-    //     "tsx": "never"
-    //   }
-    // ],
+    //using this rule to that  import exentsions are not need in typescript
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
 
     // will allow us to ! use in typescript. Just make sure we are guarantee it needs wil be assigned. dont even display warning
     "@typescript-eslint/no-non-null-assertion": 0,
@@ -149,9 +148,15 @@
   },
   "settings": {
     "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "moduleDirectory": ["node_modules", "src/"]
+      "typescript": {
+        "alwaysTryTypes": true
+      },
+      "project": {
+        "project": [
+          "./client/tsconfig.json",
+          "./auth/tsconfig.json",
+          "./tickets/tsconfig.json"
+        ]
       }
     }
   }
