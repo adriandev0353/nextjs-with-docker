@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth-container
-          image: sweezed/auth:latest
+          image: sweez2022/auth:latest
           env:
             - name: JWT_KEY
               valueFrom:
