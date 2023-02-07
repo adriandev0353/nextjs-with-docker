@@ -8,6 +8,9 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
 
+    // no console logs
+    'no-console': 'error',
+
     // adds line after all imports
     "import/newline-after-import": ["error", { "count": 1 }],
 
