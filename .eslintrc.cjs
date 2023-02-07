@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', "import"],
+  plugins: ['@typescript-eslint', 'import'],
   root: true,
   rules: {
     // will allow us to ! use in typescript. Just make sure we are guarantee it needs wil be assigned. dont even display warning
@@ -11,8 +11,11 @@ module.exports = {
     // no console logs
     'no-console': 'error',
 
+    // no unused variables
+    '@typescript-eslint/no-unused-vars': 'error',
+
     // adds line after all imports
-    "import/newline-after-import": ["error", { "count": 1 }],
+    'import/newline-after-import': ['error', { count: 1 }],
 
     // add proper spacing between statements and blocks of code
     'padding-line-between-statements': [
