@@ -1,13 +1,13 @@
-import express from 'express'
-import { Request, NextFunction } from 'express'
+import express, { type Request } from 'express'
 import { body } from 'express-validator'
-import { User } from '../models/users'
-import { NotFoundError, GeneralError } from '@sweez/libs'
-import { validateRequest } from '@sweez/libs'
+import {
+  NotFoundError,
+  GeneralError,
+  validateRequest,
+  type CustomResponseType
+} from '@sweez/libs'
 import { Password } from '../libs/password'
-
-// types
-import { CustomResponseType } from '@sweez/libs'
+import { User } from '../models/users'
 import { createSession } from '../libs/createSession'
 
 const router = express.Router()
@@ -19,23 +19,23 @@ router.post(
     body('password')
       .trim()
       .notEmpty()
-      .withMessage('You must supply a password'),
+      .withMessage('You must supply a password')
   ],
   validateRequest,
-  async (req: Request, res: CustomResponseType, next: NextFunction) => {
+  async (req: Request, res: CustomResponseType) => {
     const { email, password } = req.body
     const user = await User.findOne({ email })
+
     if (!user) {
       throw new NotFoundError('email', [`${email} Not Found`])
     }
 
     const isPasswordMatch = await Password.compare(user.password, password)
-    if (!isPasswordMatch)
-      throw new GeneralError(400, 'login failed', ['credentials not valid'])
 
-    createSession(req, user as { id: string; email: string })
+    if (!isPasswordMatch) throw new GeneralError(400, 'login failed', ['credentials not valid'])
+    createSession(req, user as { id: string, email: string })
     return res.send({
-      message: `signin user - id:${user.id}  email: ${user.email}`,
+      message: `signin user - id:${user.id}  email: ${user.email}`
     })
   }
 )

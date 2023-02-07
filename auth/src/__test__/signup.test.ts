@@ -3,7 +3,7 @@ import { app } from '../app'
 
 describe('signup route', () => {
   it('should return a 201 on successful signup', async () => {
-    return request(app)
+    await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
@@ -11,9 +11,8 @@ describe('signup route', () => {
       })
       .expect(201)
   })
-
   it('should return 400 with invalid email', async () => {
-    return request(app)
+    await request(app)
       .post('/api/users/signup')
       .send({
         email: 'testtest.com',
@@ -21,9 +20,8 @@ describe('signup route', () => {
       })
       .expect(400)
   })
-
   it('should return 400 with invalid password', async () => {
-    return request(app)
+    await request(app)
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
@@ -31,7 +29,6 @@ describe('signup route', () => {
       })
       .expect(400)
   })
-
   it('should return 400 with missing email and password', async () => {
     await request(app)
       .post('/api/users/signup')
@@ -40,7 +37,6 @@ describe('signup route', () => {
         password: 'password',
       })
       .expect(400)
-
     await request(app)
       .post('/api/users/signup')
       .send({
@@ -49,7 +45,6 @@ describe('signup route', () => {
       })
       .expect(400)
   })
-
   it('should not allow duplicate emails', async () => {
     await request(app)
       .post('/api/users/signup')
@@ -58,7 +53,6 @@ describe('signup route', () => {
         password: 'password',
       })
       .expect(201)
-
     await request(app)
       .post('/api/users/signup')
       .send({
@@ -67,7 +61,6 @@ describe('signup route', () => {
       })
       .expect(422)
   })
-
   it('should have a cookie header after successful signup', async () => {
     const response = await request(app)
       .post('/api/users/signup')

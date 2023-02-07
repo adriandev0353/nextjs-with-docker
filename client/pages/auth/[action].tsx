@@ -1,30 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useRef, type FormEvent } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
+import { type GetStaticPropsContext } from 'next'
+import { type ParsedUrlQuery } from 'querystring'
 import { useCallRequest } from '../../hooks/useCallRequest'
+import { EMethod } from '../../shared-types'
 
-// types
-import { FormEvent } from 'react'
-import { EMethod } from '../../hooks/useCallRequest'
-import { GetStaticPropsContext } from 'next'
-import { ParsedUrlQuery } from 'querystring'
 interface IParams extends ParsedUrlQuery {
   action: string | undefined
 }
-
 interface IAuthenticateProps {
   action: string
 }
-
-function Authenticate({ action }: IAuthenticateProps) {
+function Authenticate ({ action }: IAuthenticateProps) {
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
   const { errors, doRequest } = useCallRequest({
     url: `/api/users/${action}`,
-    method: EMethod.POST,
+    method: EMethod.POST
   })
-
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault()
     const email = emailRef.current?.value
@@ -32,7 +27,10 @@ function Authenticate({ action }: IAuthenticateProps) {
 
     if (email && password) {
       const response = await doRequest({ email, password })
-      if (response !== undefined) Router.push('/')
+
+      if (response !== undefined) {
+        await Router.push('/')
+      }
     }
   }
 
@@ -44,30 +42,33 @@ function Authenticate({ action }: IAuthenticateProps) {
 
       <form onSubmit={submitHandler}>
         <h1>{action === 'signin' ? 'Sign In' : 'Sign Up'}</h1>
-        <div className='form-group'>
-          <label htmlFor='email'>Email Address</label>
+        <div className="form-group">
+          <label htmlFor="email">Email Address</label>
           <input
-            className='form-control'
-            type='email'
-            id='email'
-            name='email'
-            placeholder='Enter email'
+            className="form-control"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter email"
             ref={emailRef}
           />
         </div>
-        <div className='form-group'>
-          <label htmlFor='password'>Password</label>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
           <input
-            className='form-control'
-            type='password'
-            id='password'
-            name='password'
-            placeholder='Enter password'
+            className="form-control"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
             ref={passwordRef}
           />
         </div>
         {errors}
-        <button type='submit' className='btn btn-primary mt-2'>
+        <button
+          type="submit"
+          className="btn btn-primary mt-2"
+        >
           {action === 'signin' ? 'Sign In' : 'Sign Up'}
         </button>
         <Link
@@ -85,19 +86,19 @@ function Authenticate({ action }: IAuthenticateProps) {
 
 export default Authenticate
 
-export async function getStaticPaths() {
+export async function getStaticPaths () {
   return {
     paths: [{ params: { action: 'signin' } }, { params: { action: 'signup' } }],
-    fallback: false,
+    fallback: false
   }
 }
 
-export async function getStaticProps(ctx: GetStaticPropsContext<IParams>) {
+export async function getStaticProps (ctx: GetStaticPropsContext<IParams>) {
   const { action } = ctx.params as IAuthenticateProps
 
   return {
     props: {
-      action: action,
-    },
+      action
+    }
   }
 }

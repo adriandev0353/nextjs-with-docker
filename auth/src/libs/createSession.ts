@@ -1,21 +1,19 @@
 import jwt from 'jsonwebtoken'
+import { type Request } from 'express'
 
-// types
-import { Request } from 'express'
-
-export function createSession(
+export function createSession (
   req: Request,
-  user: { id: string; email: string }
+  user: { id: string, email: string }
 ) {
   const userJwt = jwt.sign(
     {
       id: user.id,
-      email: user.email,
+      email: user.email
     },
-    process.env.JWT_KEY! // check performed on start
+    process.env.JWT_KEY!
   )
 
   req.session = {
-    jwt: userJwt,
+    jwt: userJwt
   }
 }
