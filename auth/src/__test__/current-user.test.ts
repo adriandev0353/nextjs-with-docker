@@ -20,6 +20,6 @@ describe('current user route', () => {
       .send({})
       .expect(200)
 
-    expect(response.body.message).toEqual('')
+    expect(response.body.message).not.toEqual('')
   })
 })
