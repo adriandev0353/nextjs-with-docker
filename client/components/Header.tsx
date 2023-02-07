@@ -12,11 +12,11 @@ interface LinkConfigType {
 export const Header = ({ currentUser }: ICurrentUserProps) => {
   const { doRequest } = useCallRequest({
     url: '/api/users/signout',
-    method: EMethod.POST
+    method: EMethod.POST,
   })
   const linkConfigs: LinkConfigType[] = [
     currentUser && { label: 'Sign Out', href: '/auth/signout' },
-    !currentUser && { label: 'Sign In', href: '/auth/signin' }
+    !currentUser && { label: 'Sign In', href: '/auth/signin' },
   ].flatMap((linkConfig) => linkConfig || [])
   const onSignOutHandler = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()

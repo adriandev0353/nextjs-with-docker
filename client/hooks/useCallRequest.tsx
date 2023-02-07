@@ -5,10 +5,10 @@ import { DisplayErrorMsgs } from '../components/DisplayErrorMsgs'
 import {
   type IMessageSuccessResponse,
   type IMessageErrorResponse,
-  type IReqParams
+  type IReqParams,
 } from '../shared-types'
 
-export function useCallRequest<D> (request: IReqParams<D>) {
+export function useCallRequest<D>(request: IReqParams<D>) {
   const [errors, setErrors] = useState<ReactElement>()
   const doRequest = async function <T>(data?: T) {
     if (data) request.data = data

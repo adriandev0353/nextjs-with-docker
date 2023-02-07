@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { log } from '@sweez/libs'
 import { app } from './app'
 
-async function start () {
+async function start() {
   const db = 'tickets'
   const url = `mongodb://tickets-mongo-service:27017/${db}`
 

@@ -1,9 +1,9 @@
 name: lint N Pretty
-on: 
+on:
   pull_request:
-    branches: 
+    branches:
       - 'main'
-  
+
 jobs:
   lintNpretty:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
       - name: Run Lint
         run: |
           echo 'Running Lint...'
-          npx eslint . --fix .
+          npx eslint --fix .
 
       - name: Make Pretty
         run: |

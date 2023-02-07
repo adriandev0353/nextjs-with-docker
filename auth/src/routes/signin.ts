@@ -4,7 +4,7 @@ import {
   NotFoundError,
   GeneralError,
   validateRequest,
-  type CustomResponseType
+  type CustomResponseType,
 } from '@sweez/libs'
 import { Password } from '../libs/password'
 import { User } from '../models/users'
@@ -19,7 +19,7 @@ router.post(
     body('password')
       .trim()
       .notEmpty()
-      .withMessage('You must supply a password')
+      .withMessage('You must supply a password'),
   ],
   validateRequest,
   async (req: Request, res: CustomResponseType) => {
@@ -32,10 +32,11 @@ router.post(
 
     const isPasswordMatch = await Password.compare(user.password, password)
 
-    if (!isPasswordMatch) throw new GeneralError(400, 'login failed', ['credentials not valid'])
-    createSession(req, user as { id: string, email: string })
+    if (!isPasswordMatch)
+      throw new GeneralError(400, 'login failed', ['credentials not valid'])
+    createSession(req, user as { id: string; email: string })
     return res.send({
-      message: `signin user - id:${user.id}  email: ${user.email}`
+      message: `signin user - id:${user.id}  email: ${user.email}`,
     })
   }
 )

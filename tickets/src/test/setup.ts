@@ -10,6 +10,7 @@ declare global {
 }
 
 let mongo: MongoMemoryServer
+
 beforeAll(async () => {
   process.env.JWT_KEY = 'test'
   mongo = await MongoMemoryServer.create()
@@ -20,6 +21,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   const collections = await mongoose.connection.db.collections()
+
   collections.forEach((collection) => {
     collection.deleteMany({})
   })
@@ -33,7 +35,6 @@ afterAll(async () => {
 global.signin = async () => {
   const email = 'test@test.com'
   const password = 'password'
-
   const response = await request(app)
     .post('/api/users/signup')
     .send({
@@ -41,7 +42,7 @@ global.signin = async () => {
       password,
     })
     .expect(201)
-
   const cookie = response.get('Set-Cookie')
+
   return cookie
 }
