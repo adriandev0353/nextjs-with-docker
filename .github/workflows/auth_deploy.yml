@@ -1,7 +1,7 @@
 name: Auth Deploy
-on: 
+on:
   pull_request:
-    branches: 
+    branches:
       - 'main'
     paths:
       - 'auth/**'
@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          
+
       - name: install-dependencies
         run: |
           echo 'Installing dependencies...'

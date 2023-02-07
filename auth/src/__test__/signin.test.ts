@@ -42,6 +42,7 @@ describe('signin route', () => {
         password: 'password',
       })
       .expect(200)
+
     expect(response.get('set-cookie')).toBeDefined()
   })
 })

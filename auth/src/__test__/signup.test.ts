@@ -69,6 +69,7 @@ describe('signup route', () => {
         password: 'password',
       })
       .expect(201)
+
     // console.log('resonse.headers', response.headers)
     // console.log('resonse.body', response.body)
     expect(response.get('Set-Cookie')).toBeDefined()
