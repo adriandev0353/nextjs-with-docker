@@ -35,7 +35,7 @@ router.post(
     if (!isPasswordMatch) {
       throw new GeneralError(400, 'login failed', ['credentials not valid'])
     }
-    
+
     createSession(req, user as { id: string; email: string })
     return res.send({
       message: `signin user - id:${user.id}  email: ${user.email}`,

@@ -1,7 +1,6 @@
 import express, { type Request } from 'express'
 import cookieSession from 'cookie-session'
 // helps with erros that occur in asyc. Do not need to use 'next' to pass error
-
 import 'express-async-errors'
 import {
   currentUser,
@@ -10,10 +9,6 @@ import {
   type CustomResponseType,
 } from '@sweez/libs'
 import { signUpRouter } from './routes/signup'
-
-
-
-
 import { signInRouter } from './routes/signin'
 import { currentUserRouter } from './routes/current-user'
 import { signOutRouter } from './routes/signout'
