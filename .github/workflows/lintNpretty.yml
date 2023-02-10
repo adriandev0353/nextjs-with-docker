@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Setup Node v18
         uses: actions/setup-node@v3
@@ -30,6 +32,13 @@ jobs:
         run: |
           echo 'Making Pretty...'
           npx prettier --write .
+
+      - name: Commit lint & prettier changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore: lint & prettier'
+          commit_options: '--no-verify'
+          branch: ${{ github.head_ref}}
 
   Test:
     runs-on: ubuntu-latest
