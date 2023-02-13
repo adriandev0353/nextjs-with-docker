@@ -6,11 +6,13 @@ export interface IUserAttrs {
   email: string
   password: string
 }
+
 // An interface that describe properties of a User Document (what build will return)
-interface IUserDoc extends mongoose.Document {
+export interface IUserDoc extends mongoose.Document {
   email: string
   password: string
 }
+
 // An inteface describes the properties what user model has (TS change)
 interface IUserModel extends mongoose.Model<IUserDoc> {
   build: (attrs: IUserAttrs) => IUserDoc

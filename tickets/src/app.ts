@@ -1,13 +1,13 @@
-import express, { type Request } from 'express'
+import express, { type Request, Response } from 'express'
 import cookieSession from 'cookie-session'
 import {
   currentUser,
   errorHandler,
   NotFoundError,
-  type CustomResponseType,
 } from '@sweez/libs'
 // helps with erros that occur in asyc. Do not need to use 'next' to pass error
 import 'express-async-errors'
+import { TicketResponse } from './custom-shared-types'
 
 const app = express()
 
@@ -22,7 +22,7 @@ app.use(
   })
 )
 app.use(currentUser)
-app.get('/health', (req: Request, res: CustomResponseType) => {
+app.get('/health', (req: Request, res: Response<TicketResponse>) => {
   res.status(200).json({ message: 'Tickets health check good' })
 })
 app.all('*', (req: Request) => {

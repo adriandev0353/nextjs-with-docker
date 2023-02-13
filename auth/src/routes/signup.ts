@@ -1,13 +1,13 @@
-import express, { type Request } from 'express'
+import express, { type Request, Response } from 'express'
 import { body } from 'express-validator'
 import {
   DataBaseConnectionError,
   GeneralError,
   validateRequest,
-  type CustomResponseType,
 } from '@sweez/libs'
 import { createSession } from '../libs/createSession'
 import { User } from '../models/users'
+import { AuthResponse } from '../custom-shared-types'
 
 const router = express.Router()
 
@@ -21,7 +21,7 @@ router.post(
       .withMessage('Password must be at least 4 with max of 20 characters'),
   ],
   validateRequest,
-  async (req: Request, res: CustomResponseType) => {
+  async (req: Request, res: Response<AuthResponse>) => {
     const { email, password } = req.body
     let newUser
 
