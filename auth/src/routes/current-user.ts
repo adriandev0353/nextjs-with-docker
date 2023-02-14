@@ -1,11 +1,12 @@
-import express, { type Request } from 'express'
-import { log, type CustomResponseType } from '@sweez/libs'
+import express, { type Request, Response } from 'express'
+import { log } from '@sweez/libs'
+import { AuthResponse } from '../custom-shared-types'
 
 const router = express.Router()
 
 router.get(
   '/api/users/currentuser',
-  (req: Request, res: CustomResponseType) => {
+  (req: Request, res: Response<AuthResponse>) => {
     if (req.currentUser == null) {
       log('no current user signed in')
       return res.status(200).json({ message: '' })
