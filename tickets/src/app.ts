@@ -1,10 +1,6 @@
 import express, { type Request, Response } from 'express'
 import cookieSession from 'cookie-session'
-import {
-  currentUser,
-  errorHandler,
-  NotFoundError,
-} from '@sweez/libs'
+import { currentUser, errorHandler, NotFoundError } from '@sweez/libs'
 // helps with erros that occur in asyc. Do not need to use 'next' to pass error
 import 'express-async-errors'
 import { TicketResponse } from './custom-shared-types'

@@ -41,13 +41,16 @@ const ticketSchema = new mongoose.Schema(
       [
         {
           type: Number,
-          required: true
-        }
+          required: true,
+        },
       ],
       {
-        validate: [(arr: Array<number>) => arr.length === 6, 'picked_numbers must have 6 numbers']
-      }
-    ]
+        validate: [
+          (arr: Array<number>) => arr.length === 6,
+          'picked_numbers must have 6 numbers',
+        ],
+      },
+    ],
   },
   {
     toJSON: {

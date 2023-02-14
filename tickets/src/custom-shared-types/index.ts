@@ -1,4 +1,4 @@
-import { ITicketDoc } from "../models/tickets";
+import { ITicketDoc } from '../models/tickets'
 
 interface ITicketWithTicket {
   message: string
@@ -10,4 +10,4 @@ interface ITicketWithError {
   error: string[]
 }
 
-export type TicketResponse = ITicketWithTicket| ITicketWithError
+export type TicketResponse = ITicketWithTicket | ITicketWithError

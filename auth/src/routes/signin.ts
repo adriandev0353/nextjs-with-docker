@@ -1,10 +1,6 @@
 import express, { type Request, Response } from 'express'
 import { body } from 'express-validator'
-import {
-  NotFoundError,
-  GeneralError,
-  validateRequest,
-} from '@sweez/libs'
+import { NotFoundError, GeneralError, validateRequest } from '@sweez/libs'
 import { Password } from '../libs/password'
 import { User } from '../models/users'
 import { createSession } from '../libs/createSession'

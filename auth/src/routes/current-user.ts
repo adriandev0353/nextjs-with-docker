@@ -1,4 +1,4 @@
-import express, { type Request, Response} from 'express'
+import express, { type Request, Response } from 'express'
 import { log } from '@sweez/libs'
 import { AuthResponse } from '../custom-shared-types'
 

@@ -1,4 +1,4 @@
-import { IUserDoc } from "../models/users";
+import { IUserDoc } from '../models/users'
 
 interface IAuthWithUser {
   message: string
