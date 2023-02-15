@@ -1,12 +1,7 @@
-#!/usr/bin/expect
-
-# Install expect package for the below expect syntax
-sudo apt-get install expect
+#!/bin/sh
 
 # Install brew
-spawn /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-expect "Press RETURN to continue or any other key to abort"
-send "\r"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Set path for home brew
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /root/.profile
