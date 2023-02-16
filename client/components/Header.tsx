@@ -44,14 +44,14 @@ export const Header = ({ currentUser }: ICurrentUserProps) => {
   })
 
   return (
-    <nav className='flex space-between space-x-4'>
+    <nav className='flex justify-between border-4 border-blue-500/100 border-b-0 bg-sky-400'>
       <Link
         href="/"
-        className=""
+        className="pl-4"
       >
-        Homes
+        Home
       </Link>
-      <div className="">
+      <div className="pr-4">
         <ul className="">{links}</ul>
       </div>
     </nav>
