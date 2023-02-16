@@ -4,7 +4,6 @@ import { buildClient } from '../apiHelpers/build-client'
 import { Header } from '../components/Header'
 import { type ICurrentUserProps } from '../shared-types'
 // styles
-import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/app.css'
 
 const AppComponent = ({
@@ -12,7 +11,7 @@ const AppComponent = ({
   pageProps,
   currentUser,
 }: AppProps & ICurrentUserProps) => (
-  <div>
+  <div className="bg-sky-600 h-screen">
     <Header currentUser={currentUser} />
     <Component {...pageProps} />
   </div>

@@ -40,12 +40,21 @@ function Authenticate({ action }: IAuthenticateProps) {
         <title>{action === 'signin' ? 'Sign In' : 'Sign Up'}</title>
       </Head>
 
-      <form onSubmit={submitHandler}>
-        <h1>{action === 'signin' ? 'Sign In' : 'Sign Up'}</h1>
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
+      <form
+        onSubmit={submitHandler}
+        className="card"
+      >
+        <h1>Group Lottery</h1>
+        <h4 className="mb-5">{action === 'signin' ? 'Sign In' : 'Sign Up'}</h4>
+        <div className="form-field">
+          <label
+            className="m-3"
+            htmlFor="email"
+          >
+            Email Address
+          </label>
           <input
-            className="form-control"
+            className="gl-input-field"
             type="email"
             id="email"
             name="email"
@@ -53,10 +62,16 @@ function Authenticate({ action }: IAuthenticateProps) {
             ref={emailRef}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+
+        <div className="form-field">
+          <label
+            className="m-3"
+            htmlFor="password"
+          >
+            Password
+          </label>
           <input
-            className="form-control"
+            className="gl-input-field"
             type="password"
             id="password"
             name="password"
@@ -65,20 +80,22 @@ function Authenticate({ action }: IAuthenticateProps) {
           />
         </div>
         {errors}
-        <button
-          type="submit"
-          className="btn btn-primary mt-2"
-        >
-          {action === 'signin' ? 'Sign In' : 'Sign Up'}
-        </button>
-        <Link
-          style={{ marginLeft: '1.5rem' }}
-          href={action === 'signin' ? '/auth/signup' : '/auth/signin'}
-        >
-          {action === 'signin'
-            ? 'Not a member? Sign up'
-            : 'A member already? Sign in'}
-        </Link>
+        <div className="m-5">
+          <button
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            type="submit"
+          >
+            {action === 'signin' ? 'Sign In' : 'Sign Up'}
+          </button>
+          <Link
+            style={{ marginLeft: '1.5rem' }}
+            href={action === 'signin' ? '/auth/signup' : '/auth/signin'}
+          >
+            {action === 'signin'
+              ? 'Not a member? Sign up'
+              : 'A member already? Sign in'}
+          </Link>
+        </div>
       </form>
     </>
   )

@@ -3,9 +3,14 @@ docker_build('sweez2022/auth:latest', './auth', live_update=[
 ])
 k8s_yaml('./auth/k8s/deploy.yml')
 
-docker_build('sweez2022/gl_client:latest', './client', live_update=[
-  sync('./client/pages', '/app/pages')
-])
+docker_build(
+    'sweez2022/gl_client:latest',
+    './client',
+    live_update=[
+        sync('./client/pages', '/app/pages'),
+        sync('./client/components', '/app/components'),
+    ]
+)
 k8s_yaml('./client/k8s/deploy.yml')
 
 docker_build('sweez2022/gl_tickets:latest', './tickets', live_update=[
