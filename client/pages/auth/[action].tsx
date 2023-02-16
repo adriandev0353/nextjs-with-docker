@@ -25,7 +25,6 @@ function Authenticate({ action }: IAuthenticateProps) {
     const email = emailRef.current?.value
     const password = passwordRef.current?.value
 
-    console.log('*** password:', password)
     if (email && password) {
       const response = await doRequest({ email, password })
 
