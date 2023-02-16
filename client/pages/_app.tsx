@@ -4,7 +4,6 @@ import { buildClient } from '../apiHelpers/build-client'
 import { Header } from '../components/Header'
 import { type ICurrentUserProps } from '../shared-types'
 // styles
-import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/app.css'
 
 const AppComponent = ({

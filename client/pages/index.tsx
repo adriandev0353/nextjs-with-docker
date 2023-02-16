@@ -21,9 +21,9 @@ function Home() {
           href="/favicon.ico"
         />
       </Head>
-      <main className="main">
+      <main className="">
         <div className="d-flex-row border">
-          <h1 className="text-center">Group Lottery</h1>
+          <h1 className="text-3xl font-bold text-center">Group Lottery</h1>
           <h3 className="text-center">
             <i>luck and fun is in the group</i>
           </h3>
