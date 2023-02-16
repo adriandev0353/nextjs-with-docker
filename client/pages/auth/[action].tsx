@@ -40,13 +40,21 @@ function Authenticate({ action }: IAuthenticateProps) {
         <title>{action === 'signin' ? 'Sign In' : 'Sign Up'}</title>
       </Head>
 
-      <form onSubmit={submitHandler} className='card'>
+      <form
+        onSubmit={submitHandler}
+        className="card"
+      >
         <h1>Group Lottery</h1>
         <h4 className="mb-5">{action === 'signin' ? 'Sign In' : 'Sign Up'}</h4>
-        <div className='form-field'>
-          <label className="m-3" htmlFor="email">Email Address</label>
+        <div className="form-field">
+          <label
+            className="m-3"
+            htmlFor="email"
+          >
+            Email Address
+          </label>
           <input
-            className='gl-input-field'
+            className="gl-input-field"
             type="email"
             id="email"
             name="email"
@@ -54,11 +62,16 @@ function Authenticate({ action }: IAuthenticateProps) {
             ref={emailRef}
           />
         </div>
-        
+
         <div className="form-field">
-          <label className="m-3" htmlFor="password">Password</label>
+          <label
+            className="m-3"
+            htmlFor="password"
+          >
+            Password
+          </label>
           <input
-            className='gl-input-field'
+            className="gl-input-field"
             type="password"
             id="password"
             name="password"
@@ -67,7 +80,7 @@ function Authenticate({ action }: IAuthenticateProps) {
           />
         </div>
         {errors}
-        <div className='m-5'>
+        <div className="m-5">
           <button
             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
             type="submit"

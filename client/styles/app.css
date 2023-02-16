@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
+@layer base {
   html {
     @apply text-white;
   }
@@ -31,7 +31,7 @@ h6 {
 }
 
 i {
-  @apply italic
+  @apply italic;
 }
 
 @layer components {
@@ -42,12 +42,12 @@ i {
     border-radius: theme('borderRadius.lg');
     padding: theme('spacing.6');
     box-shadow: theme('boxShadow.2xl');
-    width: 30%
+    width: 30%;
   }
 }
 
 .form-field {
-  @apply m-1
+  @apply m-1;
 }
 
 .gl-input-field {
@@ -57,6 +57,3 @@ i {
 .cursor-pointer {
   cursor: pointer;
 }
-
-
-
