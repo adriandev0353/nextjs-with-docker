@@ -25,6 +25,7 @@ function Authenticate({ action }: IAuthenticateProps) {
     const email = emailRef.current?.value
     const password = passwordRef.current?.value
 
+    console.log('*** password:', password)
     if (email && password) {
       const response = await doRequest({ email, password })
 
@@ -46,7 +47,7 @@ function Authenticate({ action }: IAuthenticateProps) {
         <div className='form-field'>
           <label className="m-3" htmlFor="email">Email Address</label>
           <input
-            className="form-control"
+            className='gl-input-field'
             type="email"
             id="email"
             name="email"
@@ -54,10 +55,11 @@ function Authenticate({ action }: IAuthenticateProps) {
             ref={emailRef}
           />
         </div>
+        
         <div className="form-field">
           <label className="m-3" htmlFor="password">Password</label>
           <input
-            className="form-control"
+            className='gl-input-field'
             type="password"
             id="password"
             name="password"

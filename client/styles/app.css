@@ -50,6 +50,10 @@ i {
   @apply m-1
 }
 
+.gl-input-field {
+  @apply border rounded px-4 py-2 text-sky-600;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
