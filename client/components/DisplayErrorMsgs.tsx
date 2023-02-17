@@ -8,10 +8,11 @@ function DisplayErrorMsgs({ error }: IDisplayErrorMsgsProps) {
   const { message, errors } = error
 
   if (!errors) return null
+
   return (
-    <div className="alert alert-danger">
-      <div className="err_msg">{message}</div>
-      <ul className="my-0">
+    <div className="mt-3">
+      <div className="text-red-600 text-center">{message}</div>
+      <ul className="text-red-600 ml-2 text-center">
         {errors[0] &&
           errors.map((err, i) => (
             <li
@@ -20,7 +21,8 @@ function DisplayErrorMsgs({ error }: IDisplayErrorMsgsProps) {
             >
               {err}
             </li>
-          ))}
+          ))
+        }
       </ul>
     </div>
   )
