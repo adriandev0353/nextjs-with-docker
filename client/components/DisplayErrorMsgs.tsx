@@ -21,8 +21,7 @@ function DisplayErrorMsgs({ error }: IDisplayErrorMsgsProps) {
             >
               {err}
             </li>
-          ))
-        }
+          ))}
       </ul>
     </div>
   )
