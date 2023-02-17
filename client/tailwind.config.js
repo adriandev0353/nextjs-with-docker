@@ -6,7 +6,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {   
+    extend: {
       colors: {
         primary: {
           DEFAULT: '#0284c7',
@@ -15,8 +15,8 @@ module.exports = {
         secondary: {
           DEFAULT: '#38bdf8',
           accent: '#3C83F6',
-        }
-      }
+        },
+      },
     },
   },
   plugins: [],
