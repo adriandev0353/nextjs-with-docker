@@ -11,7 +11,7 @@ const AppComponent = ({
   pageProps,
   currentUser,
 }: AppProps & ICurrentUserProps) => (
-  <div className="bg-sky-600 h-screen">
+  <div className="bg-primary h-screen">
     <Header currentUser={currentUser} />
     <Component {...pageProps} />
   </div>

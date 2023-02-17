@@ -42,7 +42,7 @@ function Authenticate({ action }: IAuthenticateProps) {
 
       <form
         onSubmit={submitHandler}
-        className="card"
+        className="lg:card"
       >
         <h1>Group Lottery</h1>
         <h4 className="mb-5">{action === 'signin' ? 'Sign In' : 'Sign Up'}</h4>
