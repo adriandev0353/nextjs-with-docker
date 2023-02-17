@@ -44,7 +44,7 @@ export const Header = ({ currentUser }: ICurrentUserProps) => {
   })
 
   return (
-    <nav className="flex justify-between border-4 border-blue-500/100 border-b-0 bg-sky-400">
+    <nav className="flex justify-between bg-secondary border-4 border-secondary-accent border-b-0">
       <Link
         href="/"
         className="pl-4"
