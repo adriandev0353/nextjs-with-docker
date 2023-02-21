@@ -2,9 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .w-98 {
+    width: 98%;
+  }
+}
+
 @layer base {
-  html {
-    @apply text-white;
+  html,
+  body {
+    @apply text-white bg-primary m-0 p-0 w-screen h-screen border-2 border-black;
   }
 }
 
@@ -35,6 +42,13 @@ i {
 }
 
 @layer components {
+  .page-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+  }
+
   .card {
     margin-top: 5rem;
     margin-left: 5rem;
@@ -47,7 +61,7 @@ i {
 }
 
 .form-field {
-  @apply m-1;
+  @apply m-1 flex flex-col;
 }
 
 .gl-input-field {
