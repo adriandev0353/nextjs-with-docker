@@ -5,7 +5,7 @@ import { buildClient } from '../apiHelpers/build-client'
 
 function Home() {
   return (
-    <div className='page-container'>
+    <div className="page-container">
       <Head>
         <title>Group Lottery</title>
         <meta
@@ -30,9 +30,14 @@ function Home() {
         </div>
 
         <div className="flex-1 flex text-center justify-center">
-          <div className='flex flex-col m-10'>
-            <i className='block'>This will be home screen when you are not logged in</i>
-            <i className='block'>However when you are logged in it will be the groups page as the home page</i>
+          <div className="flex flex-col m-10">
+            <i className="block">
+              This will be home screen when you are not logged in
+            </i>
+            <i className="block">
+              However when you are logged in it will be the groups page as the
+              home page
+            </i>
           </div>
         </div>
       </main>
@@ -53,7 +58,7 @@ Home.getInitialProps = async (ctx: NextPageContext) => {
     })
     ctx.res?.end()
   }
-  
+
   return { currentUser: data.message || null }
 }
 

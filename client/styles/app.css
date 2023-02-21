@@ -9,7 +9,8 @@
 }
 
 @layer base {
-  html, body {
+  html,
+  body {
     @apply text-white bg-primary m-0 p-0 w-screen h-screen border-2 border-black;
   }
 }

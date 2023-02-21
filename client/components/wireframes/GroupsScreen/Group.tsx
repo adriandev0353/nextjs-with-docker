@@ -12,7 +12,7 @@ export interface Igroup {
 
 interface IgroupProps {
   group: Igroup
- }
+}
 
 const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
   return (
@@ -25,7 +25,10 @@ const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
         <li>New Group Messages: {group.newgroup_msgs}</li>
         <li>Tickets Purchased: {group.tickets_purchased}</li>
         <li>Tickets Submitted: {group.tickets_submitted}</li>
-        <li>Tickets entries left: {group.tickets_purchased - group.tickets_submitted}</li>
+        <li>
+          Tickets entries left:{' '}
+          {group.tickets_purchased - group.tickets_submitted}
+        </li>
       </ul>
     </div>
   )
