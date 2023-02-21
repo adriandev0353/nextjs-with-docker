@@ -14,10 +14,10 @@ interface IgroupProps {
   group: Igroup
  }
 
-const Group: React.FC<IgroupProps> = ({ group }) => {
+const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
   return (
     <div>
-      <h2>Group {group.name}</h2>
+      <h2>Group: {group.name}</h2>
       <i className="text-center block">Moderator: {group.moderator}</i>
       <ul className="text-center mt-10">
         <li>Member Status: {group.member_status}</li>
@@ -30,5 +30,12 @@ const Group: React.FC<IgroupProps> = ({ group }) => {
     </div>
   )
 }
+const AddGroupScreen: React.FC = () => {
+  return (
+    <div>
+      <h2>Add Group Screen</h2>
+    </div>
+  )
+}
 
-export { Group }
+export { GroupScreen, AddGroupScreen }

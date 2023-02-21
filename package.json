@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "sudo sh dockerDevSetup.sh"
+    "setup": "sudo sh dockerDevSetup.sh",
+    "mobile-dev": "concurrently \"node ./client/mobilePortFwd.js\" \"tilt up\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
+    "concurrently": "^7.6.0",
     "eslint": "^8.33.0",
     "eslint-plugin-import": "^2.27.5",
     "typescript": "^4.9.5"

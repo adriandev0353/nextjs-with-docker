@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { type AxiosResponse } from 'axios'
 import { type NextPageContext } from 'next'
 import { buildClient } from '../apiHelpers/build-client'
-import { GroupScreens } from '../components/wireframes/GroupsScreen'
 
 function Home() {
   return (
@@ -23,7 +22,6 @@ function Home() {
         />
       </Head>
       <main className="flex-1 flex flex-col">
-
         <div className="h-1/8 border-4 bg-secondary border-secondary-accent border-t-0">
           <h1>Group Lottery</h1>
           <h4>
@@ -31,10 +29,12 @@ function Home() {
           </h4>
         </div>
 
-        <div className="groups flex-1 flex">
-          <GroupScreens />
+        <div className="flex-1 flex text-center justify-center">
+          <div className='flex flex-col m-10'>
+            <i className='block'>This will be home screen when you are not logged in</i>
+            <i className='block'>However when you are logged in it will be the groups page as the home page</i>
+          </div>
         </div>
-
       </main>
     </div>
   )
@@ -46,6 +46,14 @@ Home.getInitialProps = async (ctx: NextPageContext) => {
     '/api/users/currentuser'
   )
 
+  // redirect to groups page if user is logged in
+  if (data.message) {
+    ctx.res?.writeHead(302, {
+      Location: '/groups',
+    })
+    ctx.res?.end()
+  }
+  
   return { currentUser: data.message || null }
 }
 

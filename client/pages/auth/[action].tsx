@@ -48,7 +48,7 @@ function Authenticate({ action }: IAuthenticateProps) {
         <h4 className="mb-5">{action === 'signin' ? 'Sign In' : 'Sign Up'}</h4>
         <div className="form-field">
           <label
-            className="m-3"
+            className="m-1"
             htmlFor="email"
           >
             Email Address
@@ -65,7 +65,7 @@ function Authenticate({ action }: IAuthenticateProps) {
 
         <div className="form-field">
           <label
-            className="m-3"
+            className="m-1"
             htmlFor="password"
           >
             Password

@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"
-import { Group, Igroup } from './Group';
+import { GroupScreen, AddGroupScreen, Igroup } from './Group';
 
 const mockGroupData: Igroup[] = [
   {
@@ -34,10 +34,12 @@ const mockGroupData: Igroup[] = [
 ]
 const slides = mockGroupData.map((group) => (
   <SwiperSlide key={group.name} className="bg-primary">
-      <Group group={group} />
+      <GroupScreen group={group} />
   </SwiperSlide> 
 ))
- // slides.push() push the create your own group slide to the end of slides (work to be done here)
+
+slides.push(<AddGroupScreen />)
+
 const GroupScreens: React.FC = () => {
   return (
       <Swiper
