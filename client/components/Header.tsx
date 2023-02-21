@@ -46,7 +46,7 @@ export const Header = ({ currentUser }: ICurrentUserProps) => {
   return (
     <nav className="flex justify-between bg-secondary border-4 border-secondary-accent border-b-0">
       <Link
-        href="/"
+        href={currentUser ? "/pages" : "/"}
         className="pl-4"
       >
         Home

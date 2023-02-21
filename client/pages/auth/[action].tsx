@@ -29,7 +29,7 @@ function Authenticate({ action }: IAuthenticateProps) {
       const response = await doRequest({ email, password })
 
       if (response !== undefined) {
-        await Router.push('/')
+        await Router.push('/groups')
       }
     }
   }

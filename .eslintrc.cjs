@@ -9,7 +9,7 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 0,
 
     // no console logs
-    'no-console': 'error',
+    //'no-console': 'error',
 
     // no unused variables
     '@typescript-eslint/no-unused-vars': 'error',

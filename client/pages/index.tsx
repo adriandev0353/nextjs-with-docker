@@ -2,10 +2,11 @@ import Head from 'next/head'
 import { type AxiosResponse } from 'axios'
 import { type NextPageContext } from 'next'
 import { buildClient } from '../apiHelpers/build-client'
+import { GroupScreens } from '../components/wireframes/GroupsScreen'
 
 function Home() {
   return (
-    <>
+    <div className='page-container'>
       <Head>
         <title>Group Lottery</title>
         <meta
@@ -21,15 +22,21 @@ function Home() {
           href="/favicon.ico"
         />
       </Head>
-      <main className="">
-        <div className="border-4 bg-secondary border-secondary-accent border-t-0">
+      <main className="flex-1 flex flex-col">
+
+        <div className="h-1/8 border-4 bg-secondary border-secondary-accent border-t-0">
           <h1>Group Lottery</h1>
           <h4>
             <i>luck and fun is in the group</i>
           </h4>
         </div>
+
+        <div className="groups flex-1 flex">
+          <GroupScreens />
+        </div>
+
       </main>
-    </>
+    </div>
   )
 }
 

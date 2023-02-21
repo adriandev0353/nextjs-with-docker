@@ -11,7 +11,7 @@ const AppComponent = ({
   pageProps,
   currentUser,
 }: AppProps & ICurrentUserProps) => (
-  <div className="bg-primary h-screen">
+  <div className="flex flex-col h-screen">
     <Header currentUser={currentUser} />
     <Component {...pageProps} />
   </div>
