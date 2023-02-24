@@ -44,7 +44,9 @@ export const Header = ({ currentUser }: ICurrentUserProps) => {
   })
 
   return (
-    <nav className="flex justify-between bg-secondary border-4 border-secondary-accent border-b-0">
+    <nav className={`justify-between bg-secondary border-4 border-secondary-accent border-b-0 
+      ${currentUser ? 'hidden sm:flex' : 'flex'}`
+    }>
       <Link
         href="/"
         className="pl-4"
