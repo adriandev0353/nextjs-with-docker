@@ -9,6 +9,46 @@ interface LinkConfigType {
   href: string
 }
 
+interface Ihambergerprops {
+  show: boolean
+}
+
+const HambergerMenu: React.FC<Ihambergerprops> = ({ show }) => {
+  if (show)
+    return (
+      <div className={`sm:hidden flex justify-end m-2 h-15`}>
+        <button className="flex items-center px-3 py-2 border rounded-md text-secondary-accent border-gray-400 bg-white hover:bg-gray-300 active:bg-gray-400 transform transition-transform duration-300">
+          <svg className="h-4 w-3">
+            <rect
+              x="0"
+              y="0"
+              width="20"
+              height="2"
+              rx="1"
+              fill="currentColor"
+            />
+            <rect
+              x="0"
+              y="7"
+              width="20"
+              height="2"
+              rx="1"
+              fill="currentColor"
+            />
+            <rect
+              x="0"
+              y="14"
+              width="20"
+              height="2"
+              rx="1"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
+    )
+}
+
 export const Header = ({ currentUser }: ICurrentUserProps) => {
   const { doRequest } = useCallRequest({
     url: '/api/users/signout',
@@ -44,16 +84,22 @@ export const Header = ({ currentUser }: ICurrentUserProps) => {
   })
 
   return (
-    <nav className="flex justify-between bg-secondary border-4 border-secondary-accent border-b-0">
-      <Link
-        href="/"
-        className="pl-4"
+    <>
+      <nav
+        className={`justify-between bg-secondary border-4 border-secondary-accent border-b-0 
+        ${currentUser ? 'hidden sm:flex' : 'flex'}`}
       >
-        Home
-      </Link>
-      <div className="pr-4">
-        <ul className="">{links}</ul>
-      </div>
-    </nav>
+        <Link
+          href="/"
+          className="pl-4"
+        >
+          Home
+        </Link>
+        <div className="pr-4">
+          <ul className="">{links}</ul>
+        </div>
+      </nav>
+      <HambergerMenu show={!!currentUser} />
+    </>
   )
 }
