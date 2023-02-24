@@ -21,7 +21,7 @@ app.use(
     /* important: in local dev call your host with https or it wont set cookie */
 
     // for testing purpose jest use http not https so for cookies need to set to false in test
-    secure: process.env.NODE_ENV !== 'test',
+    secure: false, // process.env.NODE_ENV !== 'test',
   })
 )
 app.use(currentUser)

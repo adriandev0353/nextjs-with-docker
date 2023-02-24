@@ -6,15 +6,12 @@ const { log } = require('@sweez/libs')
 const app = express()
 
 app.use((req, res, next) => {
-  // Allow cross-origin requests
   res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Credentials', 'true')
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
+    'Origin, X-Requested-With, Content-Type, Accept, Cookie'
   )
-
-  // uncomment to trouble shoot mobile requests
-  //log('**** mobile req.url:', req.url)
   next()
 })
 
@@ -25,6 +22,16 @@ app.use(
     target: 'https://grouplottery.com',
     changeOrigin: true,
     secure: false,
+    onProxyReq: (proxyReq, req, res) => {
+      if (req.headers) {
+        log('Proxy Req Headers:', req.headers)
+      }
+    },
+    onProxyRes: (proxyRes, req, res) => {
+      // Log the response headers and status code
+      log(`Response headers: ${JSON.stringify(proxyRes.headers)}`)
+      log(`Response status code: ${proxyRes.statusCode}`)
+    },
   })
 )
 
@@ -41,5 +48,5 @@ app.listen(port, () => {
   const ipAddress = network.address
 
   log(`port forward set for mobile support on ${port}`)
-  log(`mobile url: ${ipAddress}:${port}/`)
+  log(`mobile url: http://${ipAddress}:${port}/`)
 })
