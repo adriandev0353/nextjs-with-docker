@@ -44,19 +44,19 @@ slides.push(<AddGroupScreen />)
 
 const GroupScreens: React.FC = () => {
   return (
-    <Swiper
-      spaceBetween={0}
-      slidesPerView={1}
-      speed={500}
-      loop={false}
-      touchRatio={1.5}
-      navigation={true}
-      effect={'slide'}
-      pagination={{ clickable: true }}
-      className=" mt-5 flex"
-    >
-      {slides}
-    </Swiper>
+      <Swiper
+          spaceBetween={0}
+          slidesPerView={1}
+          speed={500}
+          loop={false}
+          touchRatio={1.5}
+          navigation={true}
+          effect={'slide'}
+          pagination={{ clickable: true }}
+          className="flex"
+        >
+          {slides}
+        </Swiper>
   )
 }
 
