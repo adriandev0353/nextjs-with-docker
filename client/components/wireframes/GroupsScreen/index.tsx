@@ -53,7 +53,7 @@ const GroupScreens: React.FC = () => {
       navigation={true}
       effect={'slide'}
       pagination={{ clickable: true }}
-      className=" mt-5 flex"
+      className="flex"
     >
       {slides}
     </Swiper>

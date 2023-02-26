@@ -9,46 +9,6 @@ interface LinkConfigType {
   href: string
 }
 
-interface Ihambergerprops {
-  show: boolean
-}
-
-const HambergerMenu: React.FC<Ihambergerprops> = ({ show }) => {
-  if (show)
-    return (
-      <div className={`sm:hidden flex justify-end m-2 h-15`}>
-        <button className="flex items-center px-3 py-2 border rounded-md text-secondary-accent border-gray-400 bg-white hover:bg-gray-300 active:bg-gray-400 transform transition-transform duration-300">
-          <svg className="h-4 w-3">
-            <rect
-              x="0"
-              y="0"
-              width="20"
-              height="2"
-              rx="1"
-              fill="currentColor"
-            />
-            <rect
-              x="0"
-              y="7"
-              width="20"
-              height="2"
-              rx="1"
-              fill="currentColor"
-            />
-            <rect
-              x="0"
-              y="14"
-              width="20"
-              height="2"
-              rx="1"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-      </div>
-    )
-}
-
 export const Header = ({ currentUser }: ICurrentUserProps) => {
   const { doRequest } = useCallRequest({
     url: '/api/users/signout',
@@ -99,7 +59,6 @@ export const Header = ({ currentUser }: ICurrentUserProps) => {
           <ul className="">{links}</ul>
         </div>
       </nav>
-      <HambergerMenu show={!!currentUser} />
     </>
   )
 }
