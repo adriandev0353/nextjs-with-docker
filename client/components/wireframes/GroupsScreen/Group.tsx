@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { MenuContext, IMenuContext } from './HamburgerMenu/MenuContentProvider'
+import { LotteryBallIcon } from './LotteryBall'
+import { log } from '@sweez/libs'
 
 export interface Igroup {
   name: string
@@ -14,7 +17,27 @@ interface IgroupProps {
   group: Igroup
 }
 
+const addMenuContent = (group: Igroup, setMenuContent) => {
+  const MenuContent: React.FC = () => (
+    <div className="p-2 flex">
+      <LotteryBallIcon number="1" />
+      <div className="ml-2">Moderator</div>
+    </div>
+  )
+
+  log('group member_status: ', group.member_status)
+  if (group.member_status === 'moderator') { 
+    setMenuContent(<MenuContent />)
+  }
+}
 const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
+  const { setMenuContent } = useContext<IMenuContext>(MenuContext) 
+ 
+  useEffect(() => {
+    log('useEffect: addMenuContent called')
+    addMenuContent(group, setMenuContent)
+  }, [group])
+
   return (
     <div>
       <h2>Group: {group.name}</h2>
@@ -37,6 +60,7 @@ const AddGroupScreen: React.FC = () => {
   return (
     <div>
       <h2>Add Group Screen</h2>
+      <div className="text-center">Not Actual Screen: Screen Under Construction</div>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { GroupScreen, AddGroupScreen, Igroup } from './Group'
+import { log } from '@sweez/libs'
 
 const mockGroupData: Igroup[] = [
   {
@@ -40,9 +41,17 @@ const slides = mockGroupData.map((group) => (
   </SwiperSlide>
 ))
 
-slides.push(<AddGroupScreen />)
+slides.push(
+  <SwiperSlide key='add_group_screen'>
+    <AddGroupScreen />
+  </SwiperSlide>
+)
 
 const GroupScreens: React.FC = () => {
+  function onSlideChangeHandler (activeIndex) {
+    log('onSlideChangeHandler: activeIndex', activeIndex) 
+  }
+
   return (
     <Swiper
       spaceBetween={0}
@@ -54,6 +63,7 @@ const GroupScreens: React.FC = () => {
       effect={'slide'}
       pagination={{ clickable: true }}
       className="flex"
+      onSlideChange={({activeIndex}) => onSlideChangeHandler(activeIndex)}
     >
       {slides}
     </Swiper>
