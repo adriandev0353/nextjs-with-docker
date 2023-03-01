@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { LotteryBallIcon } from '../../LotteryBall'
 import { MenuContext } from '../MenuContentProvider'
 
 const CloseIcon = ({ onClose }) => {
@@ -40,25 +39,7 @@ const MenuDrawer = ({ show, closeMenu }) => {
           <div className="absolute top-0 left-0 transform -translate-x-1/4 -translate-y-1/4">
             <CloseIcon onClose={closeMenu} />
           </div>
-          <ul className="m-8">
-            {GroupMenuContent}
-            <li className="p-2 flex ">
-              <LotteryBallIcon number="2" />
-              <div className="ml-2">Show Only Your Tickets</div>
-            </li>
-            <li className="p-2 flex ">
-              <LotteryBallIcon number="3" />
-              <div className="ml-2">Show All Tickets</div>
-            </li>
-            <li className="p-2 flex ">
-              <LotteryBallIcon number="4" />
-              <div className="ml-2">Review Rules & Regulations</div>
-            </li>
-            <li className="p-2 flex ">
-              <LotteryBallIcon number="5" />
-              <div className="ml-2">Log Off</div>
-            </li>
-          </ul>
+          {GroupMenuContent}
         </div>
       </div>
     </>

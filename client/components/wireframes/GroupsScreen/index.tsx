@@ -1,7 +1,9 @@
+import React, { useContext, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { GroupScreen, AddGroupScreen, Igroup } from './Group'
-import { log } from '@sweez/libs'
+import { MenuContext } from './HamburgerMenu/MenuContentProvider'
+import { GroupMenu } from './HamburgerMenu/MenuDrawer/GroupMenu'
 
 const mockGroupData: Igroup[] = [
   {
@@ -31,6 +33,15 @@ const mockGroupData: Igroup[] = [
     tickets_submitted: 1,
     newgroup_msgs: 5,
   },
+  {
+    name: "Add Slide",
+    moderator: 'na',
+    member_status: 'none',
+    weekly_lottery: 'enrolled',
+    tickets_purchased: 0,
+    tickets_submitted: 0,
+    newgroup_msgs: 0,
+  },
 ]
 const slides = mockGroupData.map((group) => (
   <SwiperSlide
@@ -48,9 +59,15 @@ slides.push(
 )
 
 const GroupScreens: React.FC = () => {
+  const { setMenuContent} = useContext(MenuContext)
+
   function onSlideChangeHandler (activeIndex) {
-    log('onSlideChangeHandler: activeIndex', activeIndex) 
+    setMenuContent(<GroupMenu group={mockGroupData[activeIndex]} />)
   }
+
+  useEffect(() => {
+    setMenuContent(<GroupMenu group={mockGroupData[0]} />)
+  }, [])
 
   return (
     <Swiper

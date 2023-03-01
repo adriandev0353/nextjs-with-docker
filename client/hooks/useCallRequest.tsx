@@ -9,7 +9,7 @@ import {
 } from '../shared-types'
 
 export function useCallRequest<D>(request: IReqParams<D>) {
-  const [errors, setErrors] = useState<ReactElement>()
+  const [errors, setErrors] = useState<ReactElement>(null)
   const doRequest = async function <T>(data?: T) {
     if (data) request.data = data
     try {
