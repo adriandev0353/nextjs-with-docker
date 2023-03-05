@@ -1,4 +1,18 @@
 import React from 'react'
+import { Header } from './Group/Header'
+import { Message } from './Group/Message'
+
+const MockMessages = [
+  {
+    name: 'Bryce Peters',
+    text: 'Thanks for joining the lottery group now lets win some money!!!',
+    date: '10/21/2023 5:30PM',
+    icons: [
+      { name: 'like', count: 1, selectedBy: ['Bryce Peters'] },
+      { name: 'frown', count: 1, selectedBy: ['Bryce Peters'] }
+    ]
+  }
+]
 
 export interface Igroup {
   name: string
@@ -17,15 +31,13 @@ interface IgroupProps {
 const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
   return (
     <div className=''>
-      <h2 className=' text-left text-xl pb-2'>{group.name} Group</h2>
-      <h3 className='text-left text-base pb-1'>Moderator: {group.moderator}</h3>
-      <h3 className='text-left text-xs pb-1'>Deadline For Weekly Drawling: 10/21/2023 5:30PM</h3>
+      <Header name={group.name} moderator={group.moderator} />
       <div className='flex justify-center w-full h-full text-gray-800 p-2 pb-0'>
         <div className="flex flex-col h-[80vh] w-full max-w-xl bg-white shadow-xl rounded-lg">
           
           <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-auto">
             <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
-              <div className="flex w-full mt-1 space-x-3 max-w-xs">
+              <div className="flex w-full mt-1 space-x-3 max-w-xs border-2 border-red-500">
                 <div>
                   <span className="text-xs text-gray-500 ml-2">Bryce Peters</span>
                   <div className="bg-gray-300 p-3 rounded-full">
@@ -51,6 +63,12 @@ const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
                   <span className="text-xs text-gray-500 leading-none float-right p-1 mr-2">2 min ago</span>
                 </div>
               </div>
+              <Message 
+                name={MockMessages[0].name}
+                text={MockMessages[0].text}
+                date={MockMessages[0].date}
+                icons={MockMessages[0].icons}
+              />
          
               <div className="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
                 <div>
@@ -74,8 +92,6 @@ const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
               
             </div>
           </div>
-
-  
 
         </div>
         
