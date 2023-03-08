@@ -11,7 +11,7 @@
 @layer base {
   html,
   body {
-    @apply text-white bg-primary m-0 p-0 w-screen h-screen border-2 border-black;
+    @apply text-white bg-primary m-0 p-0 w-screen h-screen;
   }
 }
 
