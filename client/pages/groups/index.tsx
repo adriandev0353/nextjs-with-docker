@@ -7,7 +7,7 @@ function GroupsPage() {
     <div className="page-container">
       <main className="flex-1 flex flex-col relative">
         <HamburgerMenu show={true} />
-        <div className="groups flex-1 flex">
+        <div className="groups flex-1 flex overflow-hidden">
           <GroupScreens />
         </div>
       </main>
