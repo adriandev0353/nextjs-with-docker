@@ -1,4 +1,31 @@
 import React from 'react'
+import { Header } from './Group/Header'
+import { Log } from './Group/Log'
+
+const MockMessages = [
+  {
+    name: 'Bryce Peters',
+    text: 'Thanks for joining the lottery group now lets win some money!!!',
+    date: '10/21/2023 5:30PM',
+    icons: [
+      { name: 'like', count: 1, selectedBy: ['Bryce Peters'] },
+      { name: 'frown', count: 1, selectedBy: ['Bryce Peters'] },
+      { name: 'rocket', count: 1, selectedBy: ['Bryce Peters', 'anthony'] },
+      { name: 'smile', count: 1, selectedBy: ['Bryce Peters'] },
+    ],
+  },
+  {
+    name: 'System',
+    text: 'This Week Lottery is Now Open',
+    date: '10/22/2023 5:40PM',
+    icons: [
+      { name: 'like', count: 1, selectedBy: ['Bryce Peters'] },
+      { name: 'frown', count: 1, selectedBy: ['Bryce Peters, Edward Sweezey'] },
+      { name: 'rocket', count: 1, selectedBy: ['Bryce Peters', 'anthony'] },
+      { name: 'smile', count: 1, selectedBy: ['Bryce Peters'] },
+    ],
+  },
+]
 
 export interface Igroup {
   name: string
@@ -16,20 +43,23 @@ interface IgroupProps {
 
 const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
   return (
-    <div>
-      <h2>Group: {group.name}</h2>
-      <i className="text-center block">Moderator: {group.moderator}</i>
-      <ul className="text-center mt-10">
-        <li>Member Status: {group.member_status}</li>
-        <li>Weekly Lottery: {group.weekly_lottery}</li>
-        <li>New Group Messages: {group.newgroup_msgs}</li>
-        <li>Tickets Purchased: {group.tickets_purchased}</li>
-        <li>Tickets Submitted: {group.tickets_submitted}</li>
-        <li>
-          Tickets entries left:{' '}
-          {group.tickets_purchased - group.tickets_submitted}
-        </li>
-      </ul>
+    <div className="">
+      <Header
+        name={group.name}
+        moderator={group.moderator}
+      />
+
+      <Log messages={MockMessages} />
+
+      <div className=" flex justify-center pt-12">
+        <button className=" relative font-thin text-xl text-green-500">
+          <div className="absolute inset-x-0 h-full -bottom-2 bg-gray-100 border border-gray-500 rounded-lg "></div>
+
+          <div className=" bg-blue-100 border border-gray-500 rounded-lg py-0.5 px-2 transition transform duration-200 hover:translate-y-2">
+            Enter Weekly Lottery Drawing
+          </div>
+        </button>
+      </div>
     </div>
   )
 }
