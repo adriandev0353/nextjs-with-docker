@@ -1,4 +1,4 @@
-function CreateMessage() {
+const MessageInput: React.FC = () => {
   return (
     <div className=" flex flex-row p-2 border-gray-500 bg-gray-500 rounded-lg">
       <input
@@ -30,4 +30,4 @@ function CreateMessage() {
   )
 }
 
-export { CreateMessage }
+export { MessageInput }
