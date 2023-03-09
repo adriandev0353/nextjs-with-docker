@@ -1,6 +1,9 @@
+import React, { useContext, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { GroupScreen, AddGroupScreen, Igroup } from './Group'
+import { MenuContext } from './HamburgerMenu/MenuContentProvider'
+import { GroupMenu } from './HamburgerMenu/MenuDrawer/GroupMenu'
 
 const mockGroupData: Igroup[] = [
   {
@@ -30,6 +33,15 @@ const mockGroupData: Igroup[] = [
     tickets_submitted: 1,
     newgroup_msgs: 5,
   },
+  {
+    name: 'Add Slide',
+    moderator: 'na',
+    member_status: 'none',
+    weekly_lottery: 'enrolled',
+    tickets_purchased: 0,
+    tickets_submitted: 0,
+    newgroup_msgs: 0,
+  },
 ]
 const slides = mockGroupData.map((group) => (
   <SwiperSlide
@@ -40,9 +52,23 @@ const slides = mockGroupData.map((group) => (
   </SwiperSlide>
 ))
 
-slides.push(<AddGroupScreen />)
+slides.push(
+  <SwiperSlide key="add_group_screen">
+    <AddGroupScreen />
+  </SwiperSlide>
+)
 
 const GroupScreens: React.FC = () => {
+  const { setMenuContent } = useContext(MenuContext)
+
+  function onSlideChangeHandler(activeIndex) {
+    setMenuContent(<GroupMenu group={mockGroupData[activeIndex]} />)
+  }
+
+  useEffect(() => {
+    setMenuContent(<GroupMenu group={mockGroupData[0]} />)
+  }, [])
+
   return (
     <Swiper
       spaceBetween={0}
@@ -54,6 +80,7 @@ const GroupScreens: React.FC = () => {
       effect={'slide'}
       pagination={{ clickable: true }}
       className="flex"
+      onSlideChange={({ activeIndex }) => onSlideChangeHandler(activeIndex)}
     >
       {slides}
     </Swiper>
