@@ -34,7 +34,7 @@ const mockGroupData: Igroup[] = [
     newgroup_msgs: 5,
   },
   {
-    name: "Add Slide",
+    name: 'Add Slide',
     moderator: 'na',
     member_status: 'none',
     weekly_lottery: 'enrolled',
@@ -53,15 +53,15 @@ const slides = mockGroupData.map((group) => (
 ))
 
 slides.push(
-  <SwiperSlide key='add_group_screen'>
+  <SwiperSlide key="add_group_screen">
     <AddGroupScreen />
   </SwiperSlide>
 )
 
 const GroupScreens: React.FC = () => {
-  const { setMenuContent} = useContext(MenuContext)
+  const { setMenuContent } = useContext(MenuContext)
 
-  function onSlideChangeHandler (activeIndex) {
+  function onSlideChangeHandler(activeIndex) {
     setMenuContent(<GroupMenu group={mockGroupData[activeIndex]} />)
   }
 
@@ -80,7 +80,7 @@ const GroupScreens: React.FC = () => {
       effect={'slide'}
       pagination={{ clickable: true }}
       className="flex"
-      onSlideChange={({activeIndex}) => onSlideChangeHandler(activeIndex)}
+      onSlideChange={({ activeIndex }) => onSlideChangeHandler(activeIndex)}
     >
       {slides}
     </Swiper>

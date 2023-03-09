@@ -16,7 +16,7 @@ const CloseIcon = ({ onClose }) => {
 }
 const MenuDrawer = ({ show, closeMenu }) => {
   const { MenuContent } = useContext(MenuContext)
-  const GroupMenuContent =  MenuContent || <div />
+  const GroupMenuContent = MenuContent || <div />
 
   if (!show) {
     return null
@@ -46,6 +46,4 @@ const MenuDrawer = ({ show, closeMenu }) => {
   )
 }
 
-export {
-  MenuDrawer
-}
+export { MenuDrawer }

@@ -45,8 +45,8 @@ const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
   return (
     <>
       <Header
-          name={group.name}
-          moderator={group.moderator}
+        name={group.name}
+        moderator={group.moderator}
       />
       <Log messages={MockMessages} />
     </>
@@ -56,7 +56,9 @@ const AddGroupScreen: React.FC = () => {
   return (
     <div>
       <h2>Add Group Screen</h2>
-      <div className="text-center">Not Actual Screen: Screen Under Construction</div>
+      <div className="text-center">
+        Not Actual Screen: Screen Under Construction
+      </div>
     </div>
   )
 }
