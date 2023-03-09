@@ -10,9 +10,9 @@ const MockMessages = [
     icons: [
       { name: 'like', count: 1, selectedBy: ['Bryce Peters'] },
       { name: 'frown', count: 1, selectedBy: ['Bryce Peters'] },
-      { name: 'rocket', count: 1, selectedBy: ['Bryce Peters', "anthony"] },
-      { name: 'smile', count: 1, selectedBy: ['Bryce Peters'] }
-    ]
+      { name: 'rocket', count: 1, selectedBy: ['Bryce Peters', 'anthony'] },
+      { name: 'smile', count: 1, selectedBy: ['Bryce Peters'] },
+    ],
   },
   {
     name: 'System',
@@ -21,10 +21,10 @@ const MockMessages = [
     icons: [
       { name: 'like', count: 1, selectedBy: ['Bryce Peters'] },
       { name: 'frown', count: 1, selectedBy: ['Bryce Peters, Edward Sweezey'] },
-      { name: 'rocket', count: 1, selectedBy: ['Bryce Peters', "anthony"] },
-      { name: 'smile', count: 1, selectedBy: ['Bryce Peters'] }
-    ]
-  }
+      { name: 'rocket', count: 1, selectedBy: ['Bryce Peters', 'anthony'] },
+      { name: 'smile', count: 1, selectedBy: ['Bryce Peters'] },
+    ],
+  },
 ]
 
 export interface Igroup {
@@ -43,17 +43,21 @@ interface IgroupProps {
 
 const GroupScreen: React.FC<IgroupProps> = ({ group }) => {
   return (
-    <div className=''>
-      <Header name={group.name} moderator={group.moderator} />
+    <div className="">
+      <Header
+        name={group.name}
+        moderator={group.moderator}
+      />
 
       <Log messages={MockMessages} />
 
-       <div className=' flex justify-center pt-12'>
+      <div className=" flex justify-center pt-12">
         <button className=" relative font-thin text-xl text-green-500">
-
           <div className="absolute inset-x-0 h-full -bottom-2 bg-gray-100 border border-gray-500 rounded-lg "></div>
 
-          <div className=" bg-blue-100 border border-gray-500 rounded-lg py-0.5 px-2 transition transform duration-200 hover:translate-y-2">Enter Weekly Lottery Drawing</div>
+          <div className=" bg-blue-100 border border-gray-500 rounded-lg py-0.5 px-2 transition transform duration-200 hover:translate-y-2">
+            Enter Weekly Lottery Drawing
+          </div>
         </button>
       </div>
     </div>
